@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="si" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategic Management & BPM | Advanced Master Study Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'Noto Sans Sinhala', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0b0f19;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: #f1f5f9;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .flip-card { perspective: 1000px; }
+    .flip-inner { transition: transform 0.5s; transform-style: preserve-3d; }
+    .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-front, .flip-back { backface-visibility: hidden; }
+    .flip-back { transform: rotateY(180deg); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-sky-500 selection:text-white pb-20">
+
+  <!-- Top Sticky Header -->
+  <header class="glass-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 font-bold text-xl">🎓</div>
+        <div>
+          <h1 class="font-bold text-base sm:text-lg text-white leading-tight">Strategic Management & BPM</h1>
+          <p class="text-xs text-slate-400">50 Questions Master Study Hub & Exam Prep</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs sm:text-sm font-medium">
+        <button onclick="switchTab('study')" id="tab-study" class="px-3.5 py-2 rounded-lg transition-all bg-sky-500 text-white shadow-md">📚 විස්තරාත්මක පාඩම් (Study Guide)</button>
+        <button onclick="switchTab('cheatsheet')" id="tab-cheatsheet" class="px-3.5 py-2 rounded-lg transition-all text-slate-400 hover:text-white">⚡ Cheat Sheet</button>
+        <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3.5 py-2 rounded-lg transition-all text-slate-400 hover:text-white">🎯 Practice Quiz (50 Qs)</button>
+      </div>
+
+      <button onclick="sharePortal()" class="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs font-semibold transition-all">
+        <span>🔗 යාළුවන්ට Share කරන්න</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-6xl mx-auto px-4 pt-6">
+
+    <!-- Hero Banner & Progress Tracker -->
+    <div class="glass-card rounded-2xl p-5 sm:p-6 mb-6 relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1.5 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold">
+            <span>Complete 50 Questions Edition</span><span>•</span><span>Strategy, BPM & Leadership</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white">විභාගයට ලකුණු උපරිමයෙන්ම ගන්න සම්පූර්ණ අත්වැල! 🚀</h2>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            මෙම යෙදුම තුළ ප්‍රශ්න 50 ම ආවරණය වන පරිදි <strong>සම්පූර්ණ සිංහල Theory එක</strong>, <strong>විස්තරාත්මක පැහැදිලි කිරීම්</strong> සහ <strong>Memory Tips</strong> ඉතා පැහැදිලිව සකසා ඇත.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 min-w-[240px]">
+          <div class="flex justify-between items-center text-xs mb-2">
+            <span class="text-slate-400 font-medium">පාඩම් කරලා ඉවර ප්‍රමාණය:</span>
+            <span id="mastered-count" class="text-emerald-400 font-bold">0 / 50</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden mb-3">
+            <div id="mastered-bar" class="h-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <div class="flex justify-between gap-2">
+            <button onclick="resetMastered()" class="text-[11px] text-slate-400 hover:text-rose-400 transition">Reset Progress</button>
+            <button onclick="sharePortal()" class="md:hidden text-[11px] text-emerald-400 font-semibold">🔗 Share App</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: STUDY GUIDE -->
+    <section id="view-study" class="space-y-6">
+      <div class="glass-card rounded-2xl p-4 flex flex-col sm:flex-row gap-3 items-center justify-between">
+        <div class="relative w-full sm:w-72">
+          <input type="text" id="search-input" oninput="renderStudyGuide()" placeholder="ප්‍රශ්නයක් හෝ Keyword එකක් සොයන්න..." 
+            class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-9 pr-4 py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-sky-500">
+          <span class="absolute left-3 top-2.5 text-slate-400 text-sm">🔍</span>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5 w-full sm:w-auto" id="category-pills">
+          <button onclick="setCategory('all')" data-cat="all" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-white">සියල්ල (50)</button>
+          <button onclick="setCategory('strategy')" data-cat="strategy" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700">1. Strategy & Levels</button>
+          <button onclick="setCategory('leadership')" data-cat="leadership" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700">2. Strategic Leadership</button>
+          <button onclick="setCategory('bpm')" data-cat="bpm" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700">3. BPM & Processes</button>
+          <button onclick="setCategory('it')" data-cat="it" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700">4. IT Strategy & Systems</button>
+          <button onclick="setCategory('competition')" data-cat="competition" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700">5. Rivalry & Innovation</button>
+        </div>
+      </div>
+
+      <div id="study-cards-container" class="space-y-5"></div>
+    </section>
+
+    <!-- VIEW 2: CHEAT SHEET -->
+    <section id="view-cheatsheet" class="hidden space-y-6">
+      <div class="glass-card rounded-2xl p-5 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-white">⚡ විභාගයට යන්න කලින් ඉක්මනින් බලාගන්න Cheat Sheet එක!</h3>
+            <p class="text-xs text-slate-400 mt-1">කාඩ් එකක් උඩ Click කරලා පිළිතුර මතකද බලන්න (Interactive Flashcards).</p>
+          </div>
+          <button onclick="toggleAllFlashcards()" class="px-3.5 py-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-semibold">🔄 කාඩ් සියල්ල හරවන්න</button>
+        </div>
+        <div id="flashcards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: QUIZ -->
+    <section id="view-quiz" class="hidden space-y-6">
+      <div class="glass-card rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-center">
+            <div class="text-[10px] text-slate-400 uppercase">Assessment Mode</div>
+            <div id="quiz-score-badge" class="text-sm font-bold text-emerald-400">ලකුණු: 0 / 50</div>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">Complete 50 Questions Quiz</div>
+            <div class="text-xs text-slate-400">පිළිතුරක් තෝරාගත් වහාම නිවැරදි පිළිතුර සහ විස්තරය බලාගත හැක!</div>
+          </div>
+        </div>
+        <button onclick="resetQuiz()" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 text-xs font-semibold">🔄 Quiz එක මුල සිට</button>
+      </div>
+      <div id="quiz-questions-container" class="space-y-4"></div>
+    </section>
+
+  </main>
+
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden bg-emerald-600 text-white px-4 py-3 rounded-xl shadow-xl text-xs font-semibold"></div>
+
+  <script>
+    const studyData = [
+      {
+        id: 1, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q01. Which type of innovation involves reconfiguring existing components in a new way?",
+        answer: "Architectural Innovation",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> පවතින සංරචක (Existing components) නව ආකාරයකට එකිනෙකට සම්බන්ධ කර ප්‍රතිනිර්මාණය කිරීම <strong>Architectural Innovation</strong> ලෙස හැඳින්වේ.",
+        tip: "Reconfiguring existing components = Architectural."
+      },
+      {
+        id: 2, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q02. Which type of strategic leadership inspires followers to transcend self-interest for the greater good?",
+        answer: "Transformational Leadership",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අනුගාමිකයින් තුළ පෞද්ගලික ලාභාපේක්ෂාවලින් ඔබ්බට ගොස් සමස්ත සමාජයේ හෝ ආයතනයේ යහපැවැත්ම වෙනුවෙන් කැපවීමට පෙළඹවීම <strong>Transformational Leadership</strong> (పరిਵර්තනීය නායකත්වය) මඟින් සිදු වේ.",
+        tip: "Transcend self-interest for greater good = Transformational Leadership."
+      },
+      {
+        id: 3, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q03. What is the difference between BPM and Process Improvement (BPI)?",
+        answer: "BPM is the overall continuous discipline, while BPI is a focused, often one-off effort to fix a specific process",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> BPM යනු අඛණ්ඩව ක්‍රියාත්මක වන පුළුල් විනයකි (Continuous discipline). නමුත් BPI යනු විශේෂිත ක්‍රියාවලියක් නිවැරදි කිරීම සඳහා සිදු කරන අවස්ථානුකූල, සීමිත වෑයමකි (One-off effort).",
+        tip: "BPM = Continuous discipline | BPI = One-off targeted fix."
+      },
+      {
+        id: 4, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q04. Which of the following is a macro-level factor that shapes interfirm rivalry?",
+        answer: "Industry concentration and entry barriers",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර තරඟකාරීත්වයට බලපාන සාර්ව මට්ටමේ (Macro-level) සාධකයක් වන්නේ කර්මාන්තයේ සාන්ද්‍රණය සහ වෙළඳපොළට ඇතුළුවීමේ බාධක (Entry barriers) වේ.",
+        tip: "Macro-level rivalry factor = Industry concentration & entry barriers."
+      },
+      {
+        id: 5, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q05. What is a recommended IT strategy move when a rival launches a breakthrough innovation?",
+        answer: "Fund exploration through small experiments and partnerships",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ප්‍රතිවාදියෙකු පෙරළිකාර නවෝත්පාදනයක් (Breakthrough innovation) හඳුන්වා දුන් විට, කුඩා පරිමාණ අත්හදා බැලීම් සහ හවුල්කාරිත්වයන් හරහා නව තාක්ෂණයන් ගවේෂණය කිරීම සුදුසුය.",
+        tip: "Rival breakthrough innovation -> Fund exploration through small experiments."
+      },
+      {
+        id: 6, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q06. What is the primary time horizon for business-level strategy?",
+        answer: "Medium to long term",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ගයක (Business-level strategy) ප්‍රධාන කාල රාමුව මධ්‍ය කාලීන සිට දිගු කාලීන (Medium to long term) දක්වා විහිදේ.",
+        tip: "Business-level strategy time horizon = Medium to long term."
+      },
+      {
+        id: 7, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q07. What is the primary purpose of a process inventory in BPM?",
+        answer: "To identify and categorize business processes for prioritization",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියාවලි නාමාවලියක (Process inventory) මූලික අරමුණ වන්නේ ප්‍රමුඛතා ලබා දීම සඳහා ව්‍යාපාර ක්‍රියාවලි හඳුනා ගැනීම සහ වර්ගීකරණය කිරීමයි.",
+        tip: "Process inventory = Identify & categorize processes for prioritization."
+      },
+      {
+        id: 8, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q08. What is the key difference between incremental and breakthrough innovation?",
+        answer: "Incremental innovation improves existing products, while breakthrough innovation creates new core concepts and links",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> වර්ධක නවෝත්පාදනය (Incremental) පවතින නිෂ්පාදන දියුණු කරයි; පෙරළිකාර නවෝත්පාදනය (Breakthrough) නව මූලික සංකල්ප සහ සම්බන්ධතා නිර්මාණය කරයි.",
+        tip: "Incremental = Improves existing | Breakthrough = Creates new core concepts."
+      },
+      {
+        id: 9, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q09. What happens when there is Strategy without Execution?",
+        answer: "Daydreaming",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියාත්මක කිරීමක් (Execution) නොමැතිව උපායමාර්ගයක් පමණක් තිබීම යනු හුදු දිවා සිහිනයකි (Daydreaming).",
+        tip: "Strategy without Execution = Daydreaming."
+      },
+      {
+        id: 10, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q10. Which phase of the BPM lifecycle involves creating a visual representation of a process?",
+        answer: "Model",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> BPM ජීවන චක්‍රය තුළ ක්‍රියාවලියක දෘශ්‍ය නිරූපණයක් (Visual representation/flowchart) නිර්මාණය කරන අදියර <strong>Model</strong> නම් වේ.",
+        tip: "Visual representation of process = Model phase."
+      },
+      {
+        id: 11, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q11. Which leadership style focuses on supervision, organization, and performance management using rewards and punishments?",
+        answer: "Transactional Leadership",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ත්‍යාග සහ දඬුවම් භාවිතයෙන් අධීක්ෂණය, සංවිධානය සහ කාර්ය සාධන කළමනාකරණය සිදු කරන නායකත්ව විලාසය <strong>Transactional Leadership</strong> වේ.",
+        tip: "Rewards and punishments = Transactional Leadership."
+      },
+      {
+        id: 12, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q12. What is the core question addressed by functional-level strategy?",
+        answer: "How do we carry out the strategy in this department?",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> කාර්යාල හෝ දෙපාර්තමේන්තු මට්ටමේ උපායමාර්ගය මඟින් මූලිකව විමසන්නේ 'මෙම දෙපාර්තමේන්තුව තුළ අපි උපායමාර්ගය ක්‍රියාත්මක කරන්නේ කෙසේද?' යන්නයි.",
+        tip: "Functional-level strategy = How to carry out strategy in this department."
+      },
+      {
+        id: 13, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q13. In the context of business-level strategy, what does the Focus strategy entail?",
+        answer: "Winning by serving one small group of customers better than bigger rivals",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අවධානම යොමු කිරීමේ උපායමාර්ගය (Focus strategy) යනු විශාල ප්‍රතිවාදීන්ට වඩා කුඩා පාරිභෝගික කණ්ඩායමකට විශිෂ්ට ලෙස සේවය කරමින් ජයග්‍රහණය කිරීමයි.",
+        tip: "Focus strategy = Serving one small customer group better than rivals."
+      },
+      {
+        id: 14, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q14. What is a key feature of collaborative or shared leadership?",
+        answer: "Distributed decision-making authority across teams",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> සහයෝගීතා හෝ හවුල් නායකත්වයේ (Collaborative/Shared leadership) ප්‍රධාන ලක්ෂණය වන්නේ කණ්ඩායම් අතර තීරණ ගැනීමේ බලය විමධ්‍යගත වීමයි (Distributed authority).",
+        tip: "Shared leadership = Distributed decision-making authority."
+      },
+      {
+        id: 15, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q15. What is a competitive action?",
+        answer: "Any specific move a firm makes to improve its position against rivals",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> තරඟකාරී ක්‍රියාවක් (Competitive action) යනු ප්‍රතිවාදීන්ට එරෙහිව තම තත්ත්වය නංවා ගැනීමට ආයතනයක් ගන්නා නිශ්චිත පියවරකි.",
+        tip: "Competitive action = Firm's move to improve position against rivals."
+      },
+      {
+        id: 16, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q16. What is the first step in the action-response cycle?",
+        answer: "Awareness",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියා-ප්‍රතිචාර චක්‍රයේ (Action-response cycle) පළමු පියවර වන්නේ ප්‍රතිවාදියාගේ ක්‍රියාව පිළිබඳ **දැනුවත් වීම (Awareness)** වේ.",
+        tip: "First step in action-response = Awareness."
+      },
+      {
+        id: 17, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q17. What is the primary focus of business-level strategy?",
+        answer: "How to compete within a given industry or market",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ගයක මූලික අවධානය වන්නේ නිශ්චිත කර්මාන්තයක් හෝ වෙළඳපොළක් තුළ තරඟ කරන්නේ කෙසේද යන්නයි.",
+        tip: "Business-level strategy = How to compete within a market."
+      },
+      {
+        id: 18, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q18. Which of the following is a characteristic of strategic leadership?",
+        answer: "Long-term vision and anticipating the future",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික නායකත්වයේ ප්‍රධාන ලක්ෂණයක් වන්නේ දිගුකාලීන දැක්මක් තිබීම සහ අනාගතය අපේක්ෂා කිරීමයි (Anticipating the future).",
+        tip: "Strategic leadership = Long-term vision & anticipating future."
+      },
+      {
+        id: 19, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q19. What is Business Process Management (BPM)?",
+        answer: "A discipline that uses methods to discover, model, analyze, measure, improve, and optimize business processes",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර ක්‍රියාවලි සොයා ගැනීමට, ආකෘතිගත කිරීමට, විශ්ලේෂණය කිරීමට, මැනීමට සහ ප්‍රශස්ත කිරීමට ක්‍රමවේද භාවිතා කරන විනය <strong>BPM</strong> වේ.",
+        tip: "BPM = Discover, model, analyze, measure, improve, optimize processes."
+      },
+      {
+        id: 20, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q20. What is a strategic implication of IT/IS?",
+        answer: "The ways IT/IS affect an organization's ability to compete, create value, and achieve long-term objectives",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> තොරතුරු තාක්ෂණය මඟින් ආයතනයක තරඟ කිරීමට ඇති හැකියාව, අගය නිර්මාණය කිරීම සහ දිගුකාලීන අරමුණු සාක්ෂාත් කර ගැනීමට ඇති බලපෑම <strong>Strategic implication of IT</strong> වේ.",
+        tip: "Strategic IT implication = Affects competition, value creation & long-term goals."
+      },
+      {
+        id: 21, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q21. Which of the following is a core characteristic of strategic leaders?",
+        answer: "Anticipation of market shifts and customer trends",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> වෙළඳපොළ වෙනස්වීම් සහ පාරිභෝගික ප්‍රවණතා කල්තියා අපේක්ෂා කිරීම (Anticipation) උපායමාර්ගික නායකයින්ගේស្នුගත ලක්ෂණයකි.",
+        tip: "Core characteristic of strategic leaders = Anticipation of market shifts."
+      },
+      {
+        id: 22, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q22. What lesson is illustrated by the Kodak case study?",
+        answer: "Ignoring change drivers poses an existential risk to even market leaders",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> කොඩාක් (Kodak) ආයතනයෙන් උගත් පාඩම නම්, වෙනස්වීමේ ධාවකයන් නොසලකා හැරීම වෙළඳපොළ ප්‍රමුඛයන්ට පවා පැවැත්මේ තර්ජනයක් (Existential risk) ගෙන දෙන බවයි.",
+        tip: "Kodak case = Ignoring change drivers poses existential risk."
+      },
+      {
+        id: 23, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q23. Which model of leadership emphasizes adapting style based on follower readiness and competence?",
+        answer: "Situational Leadership",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අනුගාමිකයින්ගේ සූදානම (Readiness) සහ හැකියාව මත පදනම්ව නායකත්ව විලාසය වෙනස් කරගැනීම අවධාරණය කරන ආකෘතිය <strong>Situational Leadership</strong> වේ.",
+        tip: "Follower readiness & competence = Situational Leadership."
+      },
+      {
+        id: 24, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q24. Which IT enabler is most closely associated with a Cost Leadership strategy?",
+        answer: "Automation, shared service tools, and lean ERP",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> පිරිවැය නායකත්ව උපායමාර්ගයකට (Cost Leadership) වඩාත්ම සම්බන්ධ IT මෙවලම් වන්නේ ස්වයංක්‍රීයකරණය (Automation) සහ Lean ERP පද්ධති වේ.",
+        tip: "Cost Leadership IT = Automation & lean ERP."
+      },
+      {
+        id: 25, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q25. What is the main limitation of the traditional BPM lifecycle?",
+        answer: "It does not allow for process changes during execution",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> සාම්ප්‍රදායික BPM ජීවන චක්‍රයේ ප්‍රධාන සීමාව වන්නේ ක්‍රියාවලිය ක්‍රියාත්මක වන අතරතුර (During execution) වෙනස්කම් කිරීමට ඉඩ නොදීමයි.",
+        tip: "Traditional BPM limitation = No changes during execution."
+      },
+      {
+        id: 26, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q26. What is the 'incumbent's dilemma' in the context of the S-curve?",
+        answer: "Choosing between keeping the old technology or investing in a new one",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> S-වක්‍රය සන්දර්භය තුළ 'Incumbent's dilemma' යනු පවතින පැරණි තාක්ෂණය රැකගැනීම හෝ නව තාක්ෂණයක ආයෝජනය කිරීම අතර සිරවීමයි.",
+        tip: "Incumbent's dilemma = Old technology vs new technology investment."
+      },
+      {
+        id: 27, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q27. What is a key risk of charismatic leadership?",
+        answer: "Over-reliance on a single individual creates succession vulnerability",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> චමත්කාරජනක නායකත්වයේ (Charismatic leadership) ඇති ප්‍රධාන අවදානම වන්නේ තනි පුද්ගලයෙකු මත අධික ලෙස යැපීම නිසා අනුප්‍රාප්තික දුර්වලතා (Succession vulnerability) ඇති වීමයි.",
+        tip: "Charismatic leadership risk = Over-reliance on single individual."
+      },
+      {
+        id: 28, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q28. According to the AMC model, a rival responds to a competitive action only when it has:",
+        answer: "Awareness, Motivation, and Capability",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> AMC ආකෘතියට අනුව, ප්‍රතිවාදියෙකු ප්‍රතිචාර දක්වන්නේ ඔහුට දැනුවත්භාවය (Awareness), අභිප්‍රේරණය (Motivation) සහ හැකියාව (Capability) යන තුනම පවතින විට පමණි.",
+        tip: "AMC model = Awareness, Motivation, Capability."
+      },
+      {
+        id: 29, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q29. Which of the following is an example of an inter-organizational system?",
+        answer: "EDI",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර පද්ධතියකට (Inter-organizational system) හොඳම උදාහරණයක් වන්නේ **EDI (Electronic Data Interchange)** වේ.",
+        tip: "Inter-organizational system example = EDI."
+      },
+      {
+        id: 30, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q30. What is the key idea behind IT-enabled value creation?",
+        answer: "Value comes from the fit between IT and the organization's strategy, structure, and people",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> IT මඟින් අගය නිර්මාණය වීමේ මූලික අදහස වන්නේ IT සහ ආයතනයේ උපායමාර්ගය, ව්‍යුහය සහ ජනතාව අතර ඇති ගැළපීමෙන් (Fit) අගය ලැබෙන බවයි.",
+        tip: "IT-enabled value = Fit between IT and strategy, structure & people."
+      },
+      {
+        id: 31, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q31. What is the purpose of PESTLE analysis?",
+        answer: "To scan the external environment for political, economic, social, technological, legal, and environmental factors",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> PESTLE විශ්ලේෂණයේ අරමුණ වන්නේ දේශපාලන, ආර්ථික, සමාජීය, තාක්ෂණික, නීතිමය සහ පාරිසරික සාධක සඳහා බාහිර පරිසරය ස්කෑන් කිරීමයි.",
+        tip: "PESTLE = External environmental scan (Political, Economic, Social, Tech, Legal, Environmental)."
+      },
+      {
+        id: 32, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q32. What is the primary strategic value of inter-organizational systems?",
+        answer: "Supply-chain coordination and partner lock-in",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර පද්ධතිවල ප්‍රධාන උපායමාර්ගික අගය වන්නේ සැපයුම් දාම සම්බන්ධීකරණය (Supply-chain coordination) සහ හවුල්කරුවන් රඳවා ගැනීමයි (Partner lock-in).",
+        tip: "Inter-organizational systems value = Supply-chain coordination & partner lock-in."
+      },
+      {
+        id: 33, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q33. What is the purpose of the 'Analyse' phase in the BPM lifecycle?",
+        answer: "To evaluate performance against business goals and identify bottlenecks",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> BPM ජීවන චක්‍රයේ 'Analyse' (විශ්ලේෂණය) අදියරේ අරමුණ වන්නේ ව්‍යාපාරික ඉලක්කවලට සාපේක්ෂව කාර්ය සාධනය ඇගයීම සහ බාධක (Bottlenecks) හඳුනා ගැනීමයි.",
+        tip: "Analyse phase = Evaluate performance & identify bottlenecks."
+      },
+      {
+        id: 34, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q34. What are the three pillars of the Strategic Leadership Triangle?",
+        answer: "Vision, Strategy, Execution",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික නායකත්ව ත්‍රිකෝණයේ කුළුණු 3 වන්නේ **දැක්ම (Vision), උපායමාර්ගය (Strategy), සහ ක්‍රියාත්මක කිරීම (Execution)** වේ.",
+        tip: "Strategic Leadership Triangle = Vision, Strategy, Execution."
+      },
+      {
+        id: 35, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q35. Which leadership style is described as prioritizing the needs of followers first and empowering them to perform at their highest potential?",
+        answer: "Servant Leadership",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අනුගාමිකයින්ගේ අවශ්‍යතා මුල්තැන දී සලකා බලා ඔවුන් සවිබල ගන්වන නායකත්ව විලාසය **Servant Leadership** (සේවක නායකත්වය) වේ.",
+        tip: "Prioritizing needs of followers first = Servant Leadership."
+      },
+      {
+        id: 36, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q36. Which type of leadership is focused on leveraging tech innovation for strategic advantage and modernizing operations?",
+        answer: "Digital/Technology Leadership",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික වාසි සඳහා තාක්ෂණික නවෝත්පාදනයන් භාවිතා කිරීම සහ මෙහෙයුම් නවීකරණය කිරීම කෙරෙහි අවධානය යොමු කරන්නේ **Digital/Technology Leadership** වේ.",
+        tip: "Leveraging tech innovation = Digital/Technology Leadership."
+      },
+      {
+        id: 37, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q37. Which of the following is an internal driver of business change?",
+        answer: "Leadership transitions",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාරික වෙනස්වීම් ඇති කරන අභ්‍යන්තර ධාවකයක් (Internal driver) වන්නේ නායකත්ව මාරුවීම් (Leadership transitions) වේ.",
+        tip: "Internal driver of change = Leadership transitions."
+      },
+      {
+        id: 38, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q38. Which of the following is a key difference between process management and project management?",
+        answer: "Process management is continuous and repeatable, while project management is finite and temporary",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියාවලි කළමනාකරණය (Process management) යනු අඛණ්ඩ සහ නැවත නැවත කළ හැකි (Continuous & repeatable) ක්‍රියාවකි; ව්‍යාපෘති කළමනාකරණය යනු සීමිත සහ තාවකාලික (Finite & temporary) එකකි.",
+        tip: "Process = Continuous & repeatable | Project = Finite & temporary."
+      },
+      {
+        id: 39, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q39. According to the Strategic Alignment Model, value depends on the alignment between which two dimensions?",
+        answer: "Internal and External fit",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික ගැළපුම් ආකෘතියට (Strategic Alignment Model) අනුව අගය රඳා පවතින්නේ අභ්‍යන්තර සහ බාහිර ගැළපුම (Internal and External fit) අතර වේ.",
+        tip: "Strategic Alignment Model = Internal and External fit."
+      },
+      {
+        id: 40, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q40. Which of the following is a technological driver of business change?",
+        answer: "AI and automation",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාරික වෙනස්වීම් ඇති කරන තාක්ෂණික ධාවකයක් (Technological driver) වන්නේ කෘත්‍රිම බුද්ධිය (AI) සහ ස්වයංක්‍රීයකරණයයි.",
+        tip: "Technological driver = AI and automation."
+      },
+      {
+        id: 41, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q41. Which framework is used to analyze the competitive forces shaping an industry's profitability?",
+        answer: "Porter's Five Forces",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> කර්මාන්තයක ලාභදායීතාවයට බලපාන තරඟකාරී බලවේග විශ්ලේෂණය කිරීමට භාවිතා කරන රාමුව **Porter's Five Forces** වේ.",
+        tip: "Industry profitability & competitive forces = Porter's Five Forces."
+      },
+      {
+        id: 42, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q42. Which level of strategy is concerned with how to execute the business strategy within each department?",
+        answer: "Functional Level",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> සෑම දෙපාර්තමේන්තුවක් තුළම ව්‍යාපාරික උපායමාර්ගය ක්‍රියාත්මක කරන්නේ කෙසේද යන්න සම්බන්ධ වන්නේ **Functional Level** (කාර්ය මට්ටම) උපායමාර්ගයයි.",
+        tip: "Execute within each department = Functional Level."
+      },
+      {
+        id: 43, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q43. Which of the following is an external driver of business change?",
+        answer: "Regulatory and legal changes",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාරික වෙනස්වීම් ඇති කරන බාහිර ධාවකයක් (External driver) වන්නේ නියාමන සහ නීතිමය වෙනස්වීම් වේ.",
+        tip: "External driver of change = Regulatory and legal changes."
+      },
+      {
+        id: 44, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
+        q: "Q44. Which of the following is NOT one of the three main types of business-level strategy?",
+        answer: "Diversification",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ග තුනට (Cost Leadership, Differentiation, Focus) අයත් **නොවන** එකක් වන්නේ විවිධාංගීකරණය (**Diversification**) වේ (මෙය ආයතනික මට්ටමේ - Corporate level strategy එකකි).",
+        tip: "NOT a business-level strategy = Diversification."
+      },
+      {
+        id: 45, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q45. What are the 'Four I's' of transformational leadership?",
+        answer: "Idealized Influence, Inspirational Motivation, Inspirational Motivation, Individual Consideration",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> පරිවර්තනීය නායකත්වයේ 'Four I's' වන්නේ Idealized Influence, Inspirational Motivation, Intellectual Stimulation, සහ Individual Consideration වේ.",
+        tip: "Four I's = Influence, Motivation, Stimulation, Consideration."
+      },
+      {
+        id: 46, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
+        q: "Q46. Which of the following is NOT a key characteristic of a business process?",
+        answer: "One-time event",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර ක්‍රියාවලියක ප්‍රධාන ලක්ෂණයක් **නොවන්නේ** එය 'එක් වරක් සිදුවන සිදුවීමක්' (One-time event) වීමයි. ක්‍රියාවලි යනු අඛණ්ඩ හා පුනරාවර්තන (Repeatable) ඒවා වේ.",
+        tip: "Business processes are repeatable, NOT a 'one-time event'."
+      },
+      {
+        id: 47, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
+        q: "Q47. What is the key difference between operational leadership and strategic leadership?",
+        answer: "Strategic leadership focuses on long-term vision, while operational leadership focuses on day-to-day execution",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික නායකත්වය දිගුකාලීන දැක්ම කෙරෙහි අවධානය යොමු කරන අතර, මෙහෙයුම් නායකත්වය (Operational leadership) දෛනික ක්‍රියාත්මක කිරීම කෙරෙහි අවධානය යොමු කරයි.",
+        tip: "Strategic = Long-term vision | Operational = Day-to-day execution."
+      },
+      {
+        id: 48, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q48. Which of the following is a micro-level factor that shapes interfirm rivalry?",
+        answer: "Top managers' attention and view of rivals",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර තරඟකාරීත්වයට බලපාන ක්ෂුද්‍ර මට්ටමේ (Micro-level) සාධකයක් වන්නේ ඉහළ කළමනාකරුවන්ගේ අවධානය සහ ප්‍රතිවාදීන් පිළිබඳ ඔවුන්ගේ දැක්මයි.",
+        tip: "Micro-level rivalry factor = Top managers' attention & view of rivals."
+      },
+      {
+        id: 49, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
+        q: "Q49. What strategic move did Netflix make to transition from DVD rentals to streaming?",
+        answer: "Launched streaming services and original content",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> DVD කුලියට දීමෙන් ස්ට්‍රීමින් (Streaming) වෙත මාරුවීමට නෙට්ෆ්ලික්ස් (Netflix) විසින් ස්ට්‍රීමින් සේවා සහ මුල් අන්තර්ගතයන් (Original content) හඳුන්වා දෙන ලදී.",
+        tip: "Netflix transition = Launched streaming services and original content."
+      },
+      {
+        id: 50, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
+        q: "Q50. Which of the following describes the evolving role of IT in business from the 1990s to the 2000s?",
+        answer: "Strategic Partner",
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> 1990 ගණන්වල සිට 2000 ගණන් දක්වා ව්‍යාපාර තුළ IT හි පරිණාමය වන කාර්යභාරය විස්තර වන්නේ **Strategic Partner** (උපායමාර්ගික හවුල්කරු) ලෙසිනි.",
+        tip: "IT evolving role (1990s to 2000s) = Strategic Partner."
+      }
+    ];
+
+    const cheatSheetItems = studyData.map(item => ({ kw: item.q.replace(/^[Q0-9]+\.\s*/, ''), ans: item.answer }));
+
+    let currentCategory = 'all';
+    let masteredIds = JSON.parse(localStorage.getItem('strategic_mastered_50') || '[]');
+    let quizAnswers = {};
+
+    function init() {
+      renderStudyGuide();
+      renderCheatSheet();
+      renderQuiz();
+      updateMasteredUI();
+    }
+
+    function switchTab(tab) {
+      ['study', 'cheatsheet', 'quiz'].forEach(t => {
+        document.getElementById(`view-${t}`).classList.add('hidden');
+        document.getElementById(`tab-${t}`).className = "px-3.5 py-2 rounded-lg transition-all text-slate-400 hover:text-white";
+      });
+      document.getElementById(`view-${tab}`).classList.remove('hidden');
+      document.getElementById(`tab-${tab}`).className = "px-3.5 py-2 rounded-lg transition-all bg-sky-500 text-white shadow-md";
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.className = btn.dataset.cat === cat ? "cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-white" : "cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700";
+      });
+      renderStudyGuide();
+    }
+
+    function renderStudyGuide() {
+      const container = document.getElementById('study-cards-container');
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const filtered = studyData.filter(item => {
+        return (currentCategory === 'all' || item.cat === currentCategory) &&
+               (item.q.toLowerCase().includes(query) || item.answer.toLowerCase().includes(query) || item.theory.toLowerCase().includes(query));
+      });
+
+      let lastCat = '', html = '';
+      filtered.forEach(item => {
+        const isMastered = masteredIds.includes(item.id);
+        if (item.catName !== lastCat && currentCategory === 'all' && !query) {
+          lastCat = item.catName;
+          html += `<div class="pt-4 pb-1 border-b border-slate-800"><h3 class="text-base sm:text-lg font-extrabold text-sky-400">${item.catName}</h3></div>`;
+        }
+
+        html += `
+          <div class="glass-card rounded-2xl p-5 sm:p-6 transition-all ${isMastered ? 'border-emerald-500/40 bg-emerald-950/10' : ''}">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <span class="px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold">Question ${item.id}</span>
+              <button onclick="toggleMastered(${item.id})" class="px-3 py-1 rounded-lg text-xs font-semibold transition ${isMastered ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}">
+                ${isMastered ? '✓ පාඩම් කළා (Mastered)' : '○ පාඩම් කළා ලෙස ලකුණු කරන්න'}
+              </button>
+            </div>
+            <h4 class="text-base sm:text-lg font-bold text-white mb-3">${item.q}</h4>
+            <div class="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-200 font-bold text-xs sm:text-sm mb-4">
+              ✅ නිවැරදි පිළිතුර: ${item.answer}
+            </div>
+            <div class="space-y-3 bg-slate-900/75 rounded-xl p-4 border border-slate-800/90">
+              <div>
+                <div class="text-xs font-bold text-sky-400 uppercase tracking-wider mb-1">🧠 විස්තරාත්මක සිද්ධාන්තය (Detailed Theory)</div>
+                <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">${item.theory}</p>
+              </div>
+              <div class="pt-2 border-t border-slate-800/80">
+                <div class="bg-amber-500/10 border border-amber-500/25 rounded-lg p-3 flex items-start gap-2.5 text-xs sm:text-sm text-amber-200">
+                  <span>💡</span><div><strong class="text-amber-400">Exam Memory Tip:</strong> ${item.tip}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function toggleMastered(id) {
+      if (masteredIds.includes(id)) masteredIds = masteredIds.filter(i => i !== id);
+      else masteredIds.push(id);
+      localStorage.setItem('strategic_mastered_50', JSON.stringify(masteredIds));
+      updateMasteredUI();
+      renderStudyGuide();
+    }
+
+    function updateMasteredUI() {
+      const count = masteredIds.length;
+      const pct = Math.round((count / 50) * 100);
+      document.getElementById('mastered-count').textContent = `${count} / 50 (${pct}%)`;
+      document.getElementById('mastered-bar').style.width = `${pct}%`;
+    }
+
+    function resetMastered() {
+      masteredIds = [];
+      localStorage.setItem('strategic_mastered_50', '[]');
+      updateMasteredUI();
+      renderStudyGuide();
+      showToast("ප්‍රගතිය මුල සිට සකසන ලදී!");
+    }
+
+    function renderCheatSheet() {
+      const grid = document.getElementById('flashcards-grid');
+      grid.innerHTML = cheatSheetItems.map((item, idx) => `
+        <div onclick="this.classList.toggle('flipped')" class="flip-card h-32 cursor-pointer select-none">
+          <div class="flip-inner relative w-full h-full">
+            <div class="flip-front absolute inset-0 bg-slate-900/90 border border-slate-700/80 rounded-xl p-4 flex flex-col justify-between">
+              <div class="text-[10px] font-bold text-sky-400 uppercase flex justify-between"><span>Q #${idx + 1}</span><span>Flip ↻</span></div>
+              <div class="text-xs font-bold text-white leading-snug">${item.kw}</div>
+            </div>
+            <div class="flip-back absolute inset-0 bg-emerald-950/90 border border-emerald-500/40 rounded-xl p-4 flex flex-col justify-between">
+              <div class="text-[10px] font-bold text-emerald-400 uppercase">✅ නිවැරදි පිළිතුර</div>
+              <div class="text-xs font-bold text-emerald-200 leading-snug">${item.ans}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleAllFlashcards() {
+      document.querySelectorAll('.flip-card').forEach(c => c.classList.toggle('flipped'));
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-questions-container');
+      container.innerHTML = studyData.map(item => {
+        const isRevealed = quizAnswers[item.id] !== undefined;
+        return `
+          <div class="glass-card rounded-2xl p-5">
+            <div class="text-xs font-bold text-sky-400 mb-1">Question ${item.id}</div>
+            <h4 class="text-sm sm:text-base font-bold text-white mb-4">${item.q}</h4>
+            ${!isRevealed ? `
+              <button onclick="revealQuizAnswer(${item.id})" class="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-semibold transition">
+                🔍 නිවැරදි පිළිතුර සහ විස්තරය බලන්න
+              </button>
+            ` : `
+              <div class="space-y-3 bg-slate-900/90 border border-emerald-500/40 rounded-xl p-4 text-xs sm:text-sm">
+                <div class="font-bold text-emerald-400">✅ පිළිතුර: ${item.answer}</div>
+                <div class="text-slate-300 leading-relaxed">${item.theory}</div>
+                <div class="text-amber-300 font-medium">💡 <strong>Tip:</strong> ${item.tip}</div>
+              </div>
+            `}
+          </div>
+        `;
+      }).join('');
+      updateQuizScore();
+    }
+
+    function revealQuizAnswer(id) {
+      quizAnswers[id] = true;
+      renderQuiz();
+    }
+
+    function updateQuizScore() {
+      const count = Object.keys(quizAnswers).length;
+      document.getElementById('quiz-score-badge').textContent = `බැලූ ප්‍රමාණය: ${count} / 50`;
+    }
+
+    function resetQuiz() {
+      quizAnswers = {};
+      renderQuiz();
+      showToast("Quiz ප්‍රතිඵල මුල සිට සකසන ලදී!");
+    }
+
+    function sharePortal() {
+      const text = `🎓 Strategic Management & BPM (50 Questions Master Study Hub)! විභාගයට ලකුණු උපරිමයෙන්ම ගන්න කියාපු App එක! 🚀`;
+      if (navigator.share) navigator.share({ title: 'Study Hub', text, url: window.location.href });
+      else {
+        navigator.clipboard.writeText(text + " " + window.location.href);
+        showToast("Link එක Copy වුණා! යාළුවන්ට යවන්න.");
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 3000);
+    }
+
+    init();
+  </script>
+</body>
+</html>
