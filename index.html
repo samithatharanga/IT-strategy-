@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strategic Management & BPM | Advanced Master Study Hub</title>
+  <title>Strategic Management & BPM | Advanced Exam Prep Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
@@ -55,7 +55,7 @@
         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 font-bold text-xl">🎓</div>
         <div>
           <h1 class="font-bold text-base sm:text-lg text-white leading-tight">Strategic Management & BPM</h1>
-          <p class="text-xs text-slate-400">50 Questions Master Study Hub & Exam Prep</p>
+          <p class="text-xs text-slate-400">Advanced 50 Qs Master Exam Prep & Study Hub</p>
         </div>
       </div>
 
@@ -63,7 +63,7 @@
       <div class="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs sm:text-sm font-medium">
         <button onclick="switchTab('study')" id="tab-study" class="px-3.5 py-2 rounded-lg transition-all bg-sky-500 text-white shadow-md">📚 විස්තරාත්මක පාඩම් (Study Guide)</button>
         <button onclick="switchTab('cheatsheet')" id="tab-cheatsheet" class="px-3.5 py-2 rounded-lg transition-all text-slate-400 hover:text-white">⚡ Cheat Sheet</button>
-        <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3.5 py-2 rounded-lg transition-all text-slate-400 hover:text-white">🎯 Practice Quiz (50 Qs)</button>
+        <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3.5 py-2 rounded-lg transition-all text-slate-400 hover:text-white">🎯 30-Min Mock Exam (50 Qs)</button>
       </div>
 
       <button onclick="sharePortal()" class="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs font-semibold transition-all">
@@ -80,11 +80,11 @@
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div class="space-y-1.5 max-w-2xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold">
-            <span>Complete 50 Questions Edition</span><span>•</span><span>Strategy, BPM & Leadership</span>
+            <span>Advanced Hard/Medium MCQ Edition</span><span>•</span><span>Strategy, BPM, IT & Leadership</span>
           </div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">විභාගයට ලකුණු උපරිමයෙන්ම ගන්න සම්පූර්ණ අත්වැල! 🚀</h2>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            මෙම යෙදුම තුළ ප්‍රශ්න 50 ම ආවරණය වන පරිදි <strong>සම්පූර්ණ සිංහල Theory එක</strong>, <strong>විස්තරාත්මක පැහැදිලි කිරීම්</strong> සහ <strong>Memory Tips</strong> ඉතා පැහැදිලිව සකසා ඇත.
+            මෙම යෙදුම තුළ ප්‍රශ්න 50 ම සඳහා <strong>සවිස්තරාත්මක සිංහල Theory එක</strong>, <strong>අනිත් උත්තර වැරදි වීමට හේතු (Elimination)</strong> සහ <strong>මතක තබා ගැනීමේ කෙටි ක්‍රම (Memory Tips)</strong> ඉතා ක්‍රමානුකූලව සකසා ඇත.
           </p>
         </div>
 
@@ -145,15 +145,18 @@
       <div class="glass-card rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-4">
           <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-center">
-            <div class="text-[10px] text-slate-400 uppercase">Assessment Mode</div>
-            <div id="quiz-score-badge" class="text-sm font-bold text-emerald-400">ලකුණු: 0 / 50</div>
+            <div class="text-[10px] text-slate-400 uppercase">Countdown Timer</div>
+            <div id="quiz-timer" class="text-lg font-mono font-bold text-amber-400">30:00</div>
           </div>
           <div>
-            <div class="text-sm font-bold text-white">Complete 50 Questions Quiz</div>
-            <div class="text-xs text-slate-400">පිළිතුරක් තෝරාගත් වහාම නිවැරදි පිළිතුර සහ විස්තරය බලාගත හැක!</div>
+            <div class="text-sm font-bold text-white">30-Minute Mock Exam Mode (50 Qs)</div>
+            <div class="text-xs text-slate-400">විභාගයකදී මෙන් පිළිතුරු තෝරා අවසානයේ ලකුණු සහ පැහැදිලි කිරීම් බලාගත හැක!</div>
           </div>
         </div>
-        <button onclick="resetQuiz()" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 text-xs font-semibold">🔄 Quiz එක මුල සිට</button>
+        <div class="flex items-center gap-2">
+          <span id="quiz-score-badge" class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">ලකුණු: 0 / 50</span>
+          <button onclick="resetQuiz()" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 text-xs font-semibold">🔄 මුල සිට</button>
+        </div>
       </div>
       <div id="quiz-questions-container" class="space-y-4"></div>
     </section>
@@ -167,360 +170,868 @@
       {
         id: 1, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q01. Which type of innovation involves reconfiguring existing components in a new way?",
-        answer: "Architectural Innovation",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> පවතින සංරචක (Existing components) නව ආකාරයකට එකිනෙකට සම්බන්ධ කර ප්‍රතිනිර්මාණය කිරීම <strong>Architectural Innovation</strong> ලෙස හැඳින්වේ.",
-        tip: "Reconfiguring existing components = Architectural."
+        options: [
+          "A) Incremental Innovation",
+          "B) Architectural Innovation",
+          "C) Radical Innovation",
+          "D) Disruptive Innovation"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> පවතින සංරචක (Existing components) අලුත් ක්‍රමයකට එකිනෙකට සම්බන්ධ කර නව නිෂ්පාදනයක් හෝ පද්ධතියක් සැකසීම <strong>Architectural Innovation</strong> වේ. මෙහිදී මූලික තාක්ෂණය එලෙසම පැවතුනද ඒවා එකතු කරන ආකෘතිය වෙනස් වේ.",
+        whyWrong: [
+          "<strong>A (Incremental):</strong> පවතින දේ ක්‍රමයෙන් දියුණු කිරීම පමණි.",
+          "<strong>C (Radical):</strong> නව තාක්ෂණය සහ නව වෙළඳපොළ එකවර නිර්මාණය කිරීමයි.",
+          "<strong>D (Disruptive):</strong> පහළ මට්ටමේ වෙළඳපොළක සිට ඉහළට පැමිණ වෙළඳපොළ වෙනස් කරන නවෝත්පාදනයකි."
+        ],
+        tip: "Reconfiguring existing components in a new way = Architectural Innovation.",
+        answer: "Architectural Innovation"
       },
       {
         id: 2, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q02. Which type of strategic leadership inspires followers to transcend self-interest for the greater good?",
-        answer: "Transformational Leadership",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අනුගාමිකයින් තුළ පෞද්ගලික ලාභාපේක්ෂාවලින් ඔබ්බට ගොස් සමස්ත සමාජයේ හෝ ආයතනයේ යහපැවැත්ම වෙනුවෙන් කැපවීමට පෙළඹවීම <strong>Transformational Leadership</strong> (పరిਵර්තනීය නායකත්වය) මඟින් සිදු වේ.",
-        tip: "Transcend self-interest for greater good = Transformational Leadership."
+        options: [
+          "A) Transactional Leadership",
+          "B) Bureaucratic Leadership",
+          "C) Transformational Leadership",
+          "D) Autocratic Leadership"
+        ],
+        correct: 2,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> අනුගාමිකයින් තුළ පෞද්ගලික ලාභාපේක්ෂාවලින් (Self-interest) ඔබ්බට ගොස් ආයතනයේ හෝ සමස්ත සමාජයේ අනාගත යහපැවැත්ම වෙනුවෙන් කැපවීමට පෙළඹවීම <strong>Transformational Leadership</strong> (පරිවර්තනීය නායකත්වය) මඟින් සිදු වේ.",
+        whyWrong: [
+          "<strong>A (Transactional):</strong> ත්‍යාග සහ දඬුවම් මත පදනම්ව දෛනික කාර්ය සාධනය පාලනය කරයි.",
+          "<strong>B & D:</strong> නීති රීතිවලට යටත්ව තීන්දු ගන්නා සහ ඒකාධිකාරී නායකත්ව විලාස වේ."
+        ],
+        tip: "Transcend self-interest for the greater good = Transformational Leadership.",
+        answer: "Transformational Leadership"
       },
       {
         id: 3, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q03. What is the difference between BPM and Process Improvement (BPI)?",
-        answer: "BPM is the overall continuous discipline, while BPI is a focused, often one-off effort to fix a specific process",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> BPM යනු අඛණ්ඩව ක්‍රියාත්මක වන පුළුල් විනයකි (Continuous discipline). නමුත් BPI යනු විශේෂිත ක්‍රියාවලියක් නිවැරදි කිරීම සඳහා සිදු කරන අවස්ථානුකූල, සීමිත වෑයමකි (One-off effort).",
-        tip: "BPM = Continuous discipline | BPI = One-off targeted fix."
+        options: [
+          "A) BPM is a one-time project, while BPI is continuous.",
+          "B) BPM is the overall continuous discipline, while BPI is a focused, often one-off effort to fix a specific process.",
+          "C) BPM focuses only on IT software, while BPI focuses on employees.",
+          "D) There is no difference between BPM and BPI."
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> <strong>BPM (Business Process Management)</strong> යනු ආයතනයක ක්‍රියාවලි අඛණ්ඩව කළමනාකරණය කරන පුළුල් විනයකි (Continuous discipline). නමුත් <strong>BPI (Process Improvement)</strong> යනු කිසියම් විශේෂිත ක්‍රියාවලියක ඇති දෝෂයක් මඟහරවා ගැනීමට සිදු කරන අවස්ථානුකූල, සීමිත වෑයමකි (One-off targeted effort).",
+        whyWrong: [
+          "<strong>A වැරදියි:</strong> BPM යනු තාවකාලික ව්‍යාපෘතියක් නොව අඛණ්ඩ විනයකි.",
+          "<strong>C & D වැරදියි:</strong> තාක්ෂණය පමණක් නොව පුළුල් ක්‍රියාවලි පාලනය BPM මඟින් ආවරණය වේ."
+        ],
+        tip: "BPM = Overall continuous discipline | BPI = Focused, one-off effort for a specific process.",
+        answer: "BPM is the overall continuous discipline, while BPI is a focused, often one-off effort to fix a specific process"
       },
       {
         id: 4, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q04. Which of the following is a macro-level factor that shapes interfirm rivalry?",
-        answer: "Industry concentration and entry barriers",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර තරඟකාරීත්වයට බලපාන සාර්ව මට්ටමේ (Macro-level) සාධකයක් වන්නේ කර්මාන්තයේ සාන්ද්‍රණය සහ වෙළඳපොළට ඇතුළුවීමේ බාධක (Entry barriers) වේ.",
-        tip: "Macro-level rivalry factor = Industry concentration & entry barriers."
+        options: [
+          "A) Top managers' personal friendships",
+          "B) Industry concentration and entry barriers",
+          "C) Internal employee turnover rate",
+          "D) Daily office operational costs"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ආයතන අතර තරඟකාරීත්වයට (Interfirm rivalry) බලපාන සාර්ව මට්ටමේ (Macro-level) බාහිර සාධකයක් වන්නේ කර්මාන්තයේ සාන්ද්‍රණය (Industry concentration) සහ වෙළඳපොළට ඇතුළුවීමේ බාධක (Entry barriers) වේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු ආයතනය තුළ පවතින ක්ෂුද්‍ර මට්ටමේ (Micro/Internal) සාධක වේ.</strong>"
+        ],
+        tip: "Macro-level rivalry factor = Industry concentration & entry barriers.",
+        answer: "Industry concentration and entry barriers"
       },
       {
         id: 5, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q05. What is a recommended IT strategy move when a rival launches a breakthrough innovation?",
-        answer: "Fund exploration through small experiments and partnerships",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ප්‍රතිවාදියෙකු පෙරළිකාර නවෝත්පාදනයක් (Breakthrough innovation) හඳුන්වා දුන් විට, කුඩා පරිමාණ අත්හදා බැලීම් සහ හවුල්කාරිත්වයන් හරහා නව තාක්ෂණයන් ගවේෂණය කිරීම සුදුසුය.",
-        tip: "Rival breakthrough innovation -> Fund exploration through small experiments."
+        options: [
+          "A) Ignore the rival and cut all IT spending.",
+          "B) Fund exploration through small experiments and partnerships.",
+          "C) Sue the rival in court for copyright infringement immediately.",
+          "D) Shut down all existing R&D departments."
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ප්‍රතිවාදියෙකු හදිසියේ පෙරළිකාර නවෝත්පාදනයක් (Breakthrough innovation) හඳුන්වා දුන් විට, දැවැන්ත අවදානම් ගැනීම වෙනුවට කුඩා පරිමාණ අත්හදා බැලීම් සහ උපායමාර්ගික හවුල්කාරිත්වයන් හරහා නව තාක්ෂණයන් ගවේෂණය කිරීමට අරමුදල් සැපයීම (Fund exploration through small experiments) නුසුදුසු අවදානම් වළක්වා ගැනීමට කියාපු ක්‍රමයකි.",
+        whyWrong: [
+          "<strong>A, C, D යනු ආයතනය අඩපණ කරන සහ තරඟකාරීත්වයෙන් පරාජය වන අන්තවාදී පියවර වේ.</strong>"
+        ],
+        tip: "Rival breakthrough innovation -> Fund exploration through small experiments & partnerships.",
+        answer: "Fund exploration through small experiments and partnerships"
       },
       {
         id: 6, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q06. What is the primary time horizon for business-level strategy?",
-        answer: "Medium to long term",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ගයක (Business-level strategy) ප්‍රධාන කාල රාමුව මධ්‍ය කාලීන සිට දිගු කාලීන (Medium to long term) දක්වා විහිදේ.",
-        tip: "Business-level strategy time horizon = Medium to long term."
+        options: [
+          "A) Day-to-day operations (1-7 days)",
+          "B) Short term (Under 6 months)",
+          "C) Medium to long term (3-5+ years)",
+          "D) Century-long strategic planning"
+        ],
+        correct: 2,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ගයක (Business-level strategy) ප්‍රධාන කාල රාමුව සාමාන්‍යයෙන් මධ්‍ය කාලීන සිට දිගු කාලීන (Medium to long term - උදා: වසර 3 සිට 5 හෝ වැඩි කාලයක්) දක්වා විහිදේ.",
+        whyWrong: [
+          "<strong>A & B:</strong> දෛනික හෝ කෙටිකාලීන සැලසුම් මෙහෙයුම් මට්ටමට (Operational level) අයත් වේ."
+        ],
+        tip: "Business-level strategy time horizon = Medium to long term.",
+        answer: "Medium to long term"
       },
       {
         id: 7, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q07. What is the primary purpose of a process inventory in BPM?",
-        answer: "To identify and categorize business processes for prioritization",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියාවලි නාමාවලියක (Process inventory) මූලික අරමුණ වන්නේ ප්‍රමුඛතා ලබා දීම සඳහා ව්‍යාපාර ක්‍රියාවලි හඳුනා ගැනීම සහ වර්ගීකරණය කිරීමයි.",
-        tip: "Process inventory = Identify & categorize processes for prioritization."
+        options: [
+          "A) To calculate monthly employee salaries and taxes",
+          "B) To identify and categorize business processes for prioritization",
+          "C) To purchase physical office furniture and computers",
+          "D) To monitor customer social media complaints"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> BPM තුළ ක්‍රියාවලි නාමාවලියක (Process inventory) මූලික අරමුණ වන්නේ ආයතනයේ පවතින සියලුම ව්‍යාපාර ක්‍රියාවලි හඳුනා ගැනීම සහ ඒවා වර්ගීකරණය කිරීම මඟින් වැඩි අවධානයක් යොමු කළ යුත්තේ කුමන ක්‍රියාවලීන්ටදැයි තීරණය කිරීමයි (Prioritization).",
+        whyWrong: [
+          "<strong>A, C, D යනු ක්‍රියාවලි නාමාවලියකට අදාළ නොවන වෙනත් පරිපාලන කටයුතු වේ.</strong>"
+        ],
+        tip: "Process inventory = Identify & categorize business processes for prioritization.",
+        answer: "To identify and categorize business processes for prioritization"
       },
       {
         id: 8, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q08. What is the key difference between incremental and breakthrough innovation?",
-        answer: "Incremental innovation improves existing products, while breakthrough innovation creates new core concepts and links",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> වර්ධක නවෝත්පාදනය (Incremental) පවතින නිෂ්පාදන දියුණු කරයි; පෙරළිකාර නවෝත්පාදනය (Breakthrough) නව මූලික සංකල්ප සහ සම්බන්ධතා නිර්මාණය කරයි.",
-        tip: "Incremental = Improves existing | Breakthrough = Creates new core concepts."
+        options: [
+          "A) Incremental improves existing products, while breakthrough creates new core concepts and links.",
+          "B) Incremental is illegal, while breakthrough is legal.",
+          "C) Incremental focuses on services, while breakthrough focuses only on manufacturing.",
+          "D) There is no difference in their core outcomes."
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> වර්ධක නවෝත්පාදනය (Incremental innovation) මඟින් පවතින නිෂ්පාදන හෝ සේවා ක්‍රමයෙන් දියුණු කරයි; නමුත් පෙරළිකාර නවෝත්පාදනය (Breakthrough innovation) මඟින් සම්පූර්ණයෙන්ම නව මූලික සංකල්ප සහ සම්බන්ධතා නිර්මාණය කරයි.",
+        whyWrong: [
+          "<strong>B, C, D යනු සම්පූර්ණයෙන්ම වැරදි සංසන්දන වේ.</strong>"
+        ],
+        tip: "Incremental = Improves existing | Breakthrough = Creates new core concepts and links.",
+        answer: "Incremental innovation improves existing products, while breakthrough innovation creates new core concepts and links"
       },
       {
         id: 9, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q09. What happens when there is Strategy without Execution?",
-        answer: "Daydreaming",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියාත්මක කිරීමක් (Execution) නොමැතිව උපායමාර්ගයක් පමණක් තිබීම යනු හුදු දිවා සිහිනයකි (Daydreaming).",
-        tip: "Strategy without Execution = Daydreaming."
+        options: [
+          "A) Instant market dominance and high profits",
+          "B) Daydreaming",
+          "C) Flawless operational excellence",
+          "D) Complete customer satisfaction"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> විශිෂ්ට උපායමාර්ගයක් තිබුණද එය නිසි පරිදි ක්‍රියාත්මක කිරීමක් (Execution) නොමැති නම්, එය හුදු දිවා සිහිනයක් (Daydreaming) බවට පත්වේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු ක්‍රියාත්මක කිරීම සාර්ථක වූ විට සිදුවන දේවල් වේ.</strong>"
+        ],
+        tip: "Strategy without Execution = Daydreaming.",
+        answer: "Daydreaming"
       },
       {
         id: 10, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q10. Which phase of the BPM lifecycle involves creating a visual representation of a process?",
-        answer: "Model",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> BPM ජීවන චක්‍රය තුළ ක්‍රියාවලියක දෘශ්‍ය නිරූපණයක් (Visual representation/flowchart) නිර්මාණය කරන අදියර <strong>Model</strong> නම් වේ.",
-        tip: "Visual representation of process = Model phase."
+        options: ["A) Execute", "B) Monitor", "C) Model", "D) Optimize"],
+        correct: 2,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> BPM ජීවන චක්‍රය තුළ (BPM lifecycle) ක්‍රියාවලියක රූපමය හෝ දෘශ්‍ය නිරූපණයක් (Visual representation / Flowchart) නිර්මාණය කරන අදියර <strong>Model</strong> නම් වේ.",
+        whyWrong: [
+          "<strong>A (Execute):</strong> ක්‍රියාවලිය ක්‍රියාත්මක කිරීමයි.",
+          "<strong>B (Monitor):</strong> ක්‍රියාකාරීත්වය නිරීක්ෂණය කිරීමයි.",
+          "<strong>D (Optimize):</strong> ක්‍රියාවලිය තවදුරටත් ප්‍රශස්ත කිරීමයි."
+        ],
+        tip: "Visual representation of a process = Model phase.",
+        answer: "Model"
       },
       {
         id: 11, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q11. Which leadership style focuses on supervision, organization, and performance management using rewards and punishments?",
-        answer: "Transactional Leadership",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ත්‍යාග සහ දඬුවම් භාවිතයෙන් අධීක්ෂණය, සංවිධානය සහ කාර්ය සාධන කළමනාකරණය සිදු කරන නායකත්ව විලාසය <strong>Transactional Leadership</strong> වේ.",
-        tip: "Rewards and punishments = Transactional Leadership."
+        options: [
+          "A) Transformational Leadership",
+          "B) Transactional Leadership",
+          "C) Servant Leadership",
+          "D) Collaborative Leadership"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ත්‍යාග ලබා දීම (Rewards) සහ දඬුවම් පැමිණවීම (Punishments) හරහා අධීක්ෂණය, සංවිධානය සහ කාර්ය සාධන කළමනාකරණය සිදු කරන නායකත්ව විලාසය <strong>Transactional Leadership</strong> වේ.",
+        whyWrong: [
+          "<strong>A (Transformational):</strong> අනුගාමිකයින් අභිප්‍රේරණය කර පරිවර්තනයක් ඇති කරයි.",
+          "<strong>C (Servant):</strong> සේවකයින්ගේ අවශ්‍යතාවන්ට මුල්තැන දෙයි.",
+          "<strong>D (Collaborative):</strong> සාමූහික තීරණ ගැනීමයි."
+        ],
+        tip: "Rewards and punishments = Transactional Leadership.",
+        answer: "Transactional Leadership"
       },
       {
         id: 12, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q12. What is the core question addressed by functional-level strategy?",
-        answer: "How do we carry out the strategy in this department?",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> කාර්යාල හෝ දෙපාර්තමේන්තු මට්ටමේ උපායමාර්ගය මඟින් මූලිකව විමසන්නේ 'මෙම දෙපාර්තමේන්තුව තුළ අපි උපායමාර්ගය ක්‍රියාත්මක කරන්නේ කෙසේද?' යන්නයි.",
-        tip: "Functional-level strategy = How to carry out strategy in this department."
+        options: [
+          "A) What industries should our entire corporation compete in?",
+          "B) How do we gain a competitive advantage in this specific market?",
+          "C) How do we carry out the strategy in this department?",
+          "D) How do we merge with international competitors?"
+        ],
+        correct: 2,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> කාර්ය මට්ටමේ හෝ දෙපාර්තමේන්තු මට්ටමේ උපායමාර්ගය මඟින් මූලිකව පිළිතුරු සපයන ප්‍රශ්නය වන්නේ 'මෙම විශේෂිත දෙපාර්තමේන්තුව තුළ (උදා: අලෙවි හෝ IT) අපි උපායමාර්ගය ක්‍රියාත්මක කරන්නේ කෙසේද?' යන්නයි.",
+        whyWrong: [
+          "<strong>A:</strong> ආයතනික මට්ටමට (Corporate level) අදාළ වේ.",
+          "<strong>B:</strong> ව්‍යාපාර මට්ටමට (Business level) අදාළ වේ."
+        ],
+        tip: "Functional-level strategy = How do we carry out the strategy in this department?",
+        answer: "How do we carry out the strategy in this department?"
       },
       {
         id: 13, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q13. In the context of business-level strategy, what does the Focus strategy entail?",
-        answer: "Winning by serving one small group of customers better than bigger rivals",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අවධානම යොමු කිරීමේ උපායමාර්ගය (Focus strategy) යනු විශාල ප්‍රතිවාදීන්ට වඩා කුඩා පාරිභෝගික කණ්ඩායමකට විශිෂ්ට ලෙස සේවය කරමින් ජයග්‍රහණය කිරීමයි.",
-        tip: "Focus strategy = Serving one small customer group better than rivals."
+        options: [
+          "A) Competing across all global markets simultaneously with low prices",
+          "B) Winning by serving one small group of customers better than bigger rivals",
+          "C) Completely ignoring customer needs and focusing only on machinery",
+          "D) Merging with all competitors in the industry"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> අවධානය යොමු කිරීමේ උපායමාර්ගය (Focus strategy) යනු පුළුල් වෙළඳපොළ වෙනුවට නිශ්චිත කුඩා පාරිභෝගික කණ්ඩායමකට හෝ නිකේතනයකට (Niche market) විශිෂ්ට ලෙස සේවය කරමින් විශාල ප්‍රතිවාදීන්ට වඩා ජයග්‍රහණය කිරීමයි.",
+        whyWrong: [
+          "<strong>A, C, ද යනු Focus strategy සංකල්පයට සම්පූර්ණයෙන්ම පටහැනි වේ.</strong>"
+        ],
+        tip: "Focus strategy = Serving one small group of customers better than bigger rivals.",
+        answer: "Winning by serving one small group of customers better than bigger rivals"
       },
       {
         id: 14, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q14. What is a key feature of collaborative or shared leadership?",
-        answer: "Distributed decision-making authority across teams",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> සහයෝගීතා හෝ හවුල් නායකත්වයේ (Collaborative/Shared leadership) ප්‍රධාන ලක්ෂණය වන්නේ කණ්ඩායම් අතර තීරණ ගැනීමේ බලය විමධ්‍යගත වීමයි (Distributed authority).",
-        tip: "Shared leadership = Distributed decision-making authority."
+        options: [
+          "A) Centralizing all final decisions exclusively in a single CEO",
+          "B) Distributed decision-making authority across teams",
+          "C) Eliminating teamwork and enforcing strict isolation",
+          "D) Relying solely on automated computer algorithms for management"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> සහයෝගීතා හෝ හවුල් නායකත්වයේ (Collaborative/Shared leadership) ප්‍රධාන ලක්ෂණය වන්නේ තීරණ ගැනීමේ බලය ආයතනය තුළ හෝ කණ්ඩායම් අතර විමධ්‍යගත වීමයි (Distributed decision-making authority across teams).",
+        whyWrong: [
+          "<strong>A:</strong> සාම්ප්‍රදායික ඒකාධිකාරී නායකත්වයට අදාළ වේ.",
+          "<strong>C & D යනු වැරදි කළමනාකරණ ක්‍රම වේ.</strong>"
+        ],
+        tip: "Collaborative or shared leadership = Distributed decision-making authority across teams.",
+        answer: "Distributed decision-making authority across teams"
       },
       {
         id: 15, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q15. What is a competitive action?",
-        answer: "Any specific move a firm makes to improve its position against rivals",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> තරඟකාරී ක්‍රියාවක් (Competitive action) යනු ප්‍රතිවාදීන්ට එරෙහිව තම තත්ත්වය නංවා ගැනීමට ආයතනයක් ගන්නා නිශ්චිත පියවරකි.",
-        tip: "Competitive action = Firm's move to improve position against rivals."
+        options: [
+          "A) Internal employee recreational events",
+          "B) Any specific move a firm makes to improve its position against rivals",
+          "C) Paying routine electricity and water bills",
+          "D) Archiving old paper documents in the basement"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> තරඟකාරී ක්‍රියාවක් (Competitive action) යනු ප්‍රතිවාදීන්ට එරෙහිව වෙළඳපොළේ තම තත්ත්වය නංවා ගැනීමට හෝ වාසියක් ලබා ගැනීමට ආයතනයක් ගන්නා නිශ්චිත පියවරකි (උදා: මිල අඩු කිරීම, නව නිෂ්පාදනයක් හැඳින්වීම).",
+        whyWrong: [
+          "<strong>A, C, D යනු අභ්‍යන්තර සාමාන්‍ය පරිපාලන කටයුතු වේ.</strong>"
+        ],
+        tip: "Competitive action = Specific move to improve position against rivals.",
+        answer: "Any specific move a firm makes to improve its position against rivals"
       },
       {
         id: 16, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q16. What is the first step in the action-response cycle?",
-        answer: "Awareness",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියා-ප්‍රතිචාර චක්‍රයේ (Action-response cycle) පළමු පියවර වන්නේ ප්‍රතිවාදියාගේ ක්‍රියාව පිළිබඳ **දැනුවත් වීම (Awareness)** වේ.",
-        tip: "First step in action-response = Awareness."
+        options: ["A) Execution", "B) Awareness", "C) Motivation", "D) Evaluation"],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ක්‍රියා-ප්‍රතිචාර චක්‍රයේ (Action-response cycle) පළමු පියවර වන්නේ ප්‍රතිවාදියාගේ ක්‍රියාව හෝ වෙළඳපොළ වෙනස්වීම පිළිබඳ **දැනුවත් වීම (Awareness)** වේ. දැනුවත් වීමෙන් පසු අභිප්‍රේරණය සහ හැකියාව මත පදනම්ව ප්‍රතිචාර දැක්වීම සිදුවේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු දැනුවත් වීමෙන් පසු සිදුවන පසුකාලීන අදියර වේ.</strong>"
+        ],
+        tip: "First step in the action-response cycle = Awareness.",
+        answer: "Awareness"
       },
       {
         id: 17, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q17. What is the primary focus of business-level strategy?",
-        answer: "How to compete within a given industry or market",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ගයක මූලික අවධානය වන්නේ නිශ්චිත කර්මාන්තයක් හෝ වෙළඳපොළක් තුළ තරඟ කරන්නේ කෙසේද යන්නයි.",
-        tip: "Business-level strategy = How to compete within a market."
+        options: [
+          "A) How to compete within a given industry or market",
+          "B) Managing international diplomatic relations",
+          "C) Designing individual employee desktop wallpapers",
+          "D) Formulating global tax avoidance policies"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ගයක (Business-level strategy) මූලික අවධානය වන්නේ නිශ්චිත කර්මාන්තයක් හෝ වෙළඳපොළක් තුළ ප්‍රතිවාදීන් සමඟ සාර්ථකව තරඟ කරන්නේ කෙසේද යන්නයි (How to compete within a given industry or market).",
+        whyWrong: [
+          "<strong>B, C, D යනු ව්‍යාපාර මට්ටමේ උපායමාර්ගයට සම්පූර්ණයෙන්ම බාහිර හා අදාළ නොවන කරුණු වේ.</strong>"
+        ],
+        tip: "Business-level strategy focus = How to compete within a given industry or market.",
+        answer: "How to compete within a given industry or market"
       },
       {
         id: 18, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q18. Which of the following is a characteristic of strategic leadership?",
-        answer: "Long-term vision and anticipating the future",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික නායකත්වයේ ප්‍රධාන ලක්ෂණයක් වන්නේ දිගුකාලීන දැක්මක් තිබීම සහ අනාගතය අපේක්ෂා කිරීමයි (Anticipating the future).",
-        tip: "Strategic leadership = Long-term vision & anticipating future."
+        options: [
+          "A) Focusing exclusively on yesterday's operational mistakes",
+          "B) Long-term vision and anticipating the future",
+          "C) Avoiding all forms of calculated risks",
+          "D) Micromanaging every single hourly employee task"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> උපායමාර්ගික නායකත්වයේ (Strategic leadership) ප්‍රධාන ලක්ෂණයක් වන්නේ පුළුල් දිගුකාලීන දැක්මක් තිබීම (Long-term vision) සහ අනාගත වෙළඳපොළ තත්ත්වයන් කල්තියා අපේක්ෂා කිරීමයි (Anticipating the future).",
+        whyWrong: [
+          "<strong>A, C, D යනු සාර්ථක උපායමාර්ගික නායකත්වයකට පටහැනි දුර්වලතා වේ.</strong>"
+        ],
+        tip: "Strategic leadership characteristic = Long-term vision and anticipating the future.",
+        answer: "Long-term vision and anticipating the future"
       },
       {
         id: 19, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q19. What is Business Process Management (BPM)?",
-        answer: "A discipline that uses methods to discover, model, analyze, measure, improve, and optimize business processes",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර ක්‍රියාවලි සොයා ගැනීමට, ආකෘතිගත කිරීමට, විශ්ලේෂණය කිරීමට, මැනීමට සහ ප්‍රශස්ත කිරීමට ක්‍රමවේද භාවිතා කරන විනය <strong>BPM</strong> වේ.",
-        tip: "BPM = Discover, model, analyze, measure, improve, optimize processes."
+        options: [
+          "A) A discipline that uses methods to discover, model, analyze, measure, improve, and optimize business processes",
+          "B) A software program used solely for playing office video games",
+          "C) A legal procedure for liquidating bankrupt corporations",
+          "D) A method for recruiting temporary janitorial staff"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ව්‍යාපාර ක්‍රියාවලි සොයා ගැනීමට (Discover), ආකෘතිගත කිරීමට (Model), විශ්ලේෂණය කිරීමට (Analyze), මැනීමට (Measure), දියුණු කිරීමට (Improve) සහ ප්‍රශස්ත කිරීමට (Optimize) ක්‍රමවේද භාවිතා කරන කළමනාකරණ විනය <strong>BPM</strong> වේ.",
+        whyWrong: [
+          "<strong>B, C, D යනු BPM සංකල්පයට කිසිදු සම්බන්ධයක් නැති වැරදි විග්‍රහ වේ.</strong>"
+        ],
+        tip: "BPM = Discover, model, analyze, measure, improve, and optimize business processes.",
+        answer: "A discipline that uses methods to discover, model, analyze, measure, improve, and optimize business processes"
       },
       {
         id: 20, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q20. What is a strategic implication of IT/IS?",
-        answer: "The ways IT/IS affect an organization's ability to compete, create value, and achieve long-term objectives",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> තොරතුරු තාක්ෂණය මඟින් ආයතනයක තරඟ කිරීමට ඇති හැකියාව, අගය නිර්මාණය කිරීම සහ දිගුකාලීන අරමුණු සාක්ෂාත් කර ගැනීමට ඇති බලපෑම <strong>Strategic implication of IT</strong> වේ.",
-        tip: "Strategic IT implication = Affects competition, value creation & long-term goals."
+        options: [
+          "A) The ways IT/IS affect an organization's ability to compete, create value, and achieve long-term objectives",
+          "B) The physical weight and color of server computer boxes",
+          "C) The number of electrical sockets in an office building",
+          "D) The speed of office elevator doors"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> තොරතුරු තාක්ෂණය/පද්ධති මඟින් ආයතනයක තරඟ කිරීමට ඇති හැකියාව (Compete), අගය නිර්මාණය කිරීම (Create value) සහ දිගුකාලීන අරමුණු සාක්ෂාත් කර ගැනීමට ඇති බලපෑම <strong>Strategic implication of IT</strong> වේ.",
+        whyWrong: [
+          "<strong>B, C, D යනු තාක්ෂණයේ උපායමාර්ගික අගයට සම්පූර්ණයෙන්ම අදාළ නොවන භෞතික කරුණු වේ.</strong>"
+        ],
+        tip: "Strategic implication of IT = Ways IT affects competition, value creation, and long-term objectives.",
+        answer: "The ways IT/IS affect an organization's ability to compete, create value, and achieve long-term objectives"
       },
       {
         id: 21, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q21. Which of the following is a core characteristic of strategic leaders?",
-        answer: "Anticipation of market shifts and customer trends",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> වෙළඳපොළ වෙනස්වීම් සහ පාරිභෝගික ප්‍රවණතා කල්තියා අපේක්ෂා කිරීම (Anticipation) උපායමාර්ගික නායකයින්ගේស្នුගත ලක්ෂණයකි.",
-        tip: "Core characteristic of strategic leaders = Anticipation of market shifts."
+        options: [
+          "A) Anticipation of market shifts and customer trends",
+          "B) Reluctance to accept any new technological tools",
+          "C) Focusing only on internal office gossip",
+          "D) Ignoring competitor movements entirely"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> වෙළඳපොළ වෙනස්වීම් (Market shifts) සහ පාරිභෝගික ප්‍රවණතා (Customer trends) කල්තියා අපේක්ෂා කිරීම සහ හඳුනා ගැනීම උපායමාර්ගික නායකයින්ගේស្នුගත ලක්ෂණයකි.",
+        whyWrong: [
+          "<strong>B, C, D යනු අසාර්ථක නායකත්වයක ලක්ෂණ වේ.</strong>"
+        ],
+        tip: "Core characteristic of strategic leaders = Anticipation of market shifts and customer trends.",
+        answer: "Anticipation of market shifts and customer trends"
       },
       {
         id: 22, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q22. What lesson is illustrated by the Kodak case study?",
-        answer: "Ignoring change drivers poses an existential risk to even market leaders",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> කොඩාක් (Kodak) ආයතනයෙන් උගත් පාඩම නම්, වෙනස්වීමේ ධාවකයන් නොසලකා හැරීම වෙළඳපොළ ප්‍රමුඛයන්ට පවා පැවැත්මේ තර්ජනයක් (Existential risk) ගෙන දෙන බවයි.",
-        tip: "Kodak case = Ignoring change drivers poses existential risk."
+        options: [
+          "A) Digital photography is always a failure.",
+          "B) Ignoring change drivers poses an existential risk to even market leaders.",
+          "C) Paper cameras are superior to digital sensors.",
+          "D) Market leaders are immune to bankruptcy."
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> කොඩාක් (Kodak) ආයතනයෙන් උගත් ප්‍රධාන පාඩම නම්, ඩිජිටල් තාක්ෂණය වැනි වෙනස්වීමේ ප්‍රධාන ධාවකයන් නොසලකා හැරීම වෙළඳපොළ ප්‍රමුඛයන්ට පවා පැවැත්මේ දැවැන්ත තර්ජනයක් (Existential risk) ගෙන දෙන බවයි.",
+        whyWrong: [
+          "<strong>A, C, D යනු ඓතිහාසික සත්‍යයට සහ නඩුවට පටහැනි වැරදි ප්‍රකාශ වේ.</strong>"
+        ],
+        tip: "Kodak case study lesson = Ignoring change drivers poses an existential risk to even market leaders.",
+        answer: "Ignoring change drivers poses an existential risk to even market leaders"
       },
       {
         id: 23, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q23. Which model of leadership emphasizes adapting style based on follower readiness and competence?",
-        answer: "Situational Leadership",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අනුගාමිකයින්ගේ සූදානම (Readiness) සහ හැකියාව මත පදනම්ව නායකත්ව විලාසය වෙනස් කරගැනීම අවධාරණය කරන ආකෘතිය <strong>Situational Leadership</strong> වේ.",
-        tip: "Follower readiness & competence = Situational Leadership."
+        options: [
+          "A) Situational Leadership",
+          "B) Fixed Autocratic Leadership",
+          "C) Pure Laissez-Faire Leadership",
+          "D) Traditional Bureaucratic Leadership"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> අනුගාමිකයින්ගේ සූදානම (Readiness) සහ නිපුණතාවය (Competence) මත පදනම්ව නායකයා තම නායකත්ව විලාසය වෙනස් කර ගැලපීම අවධාරණය කරන ආකෘතිය <strong>Situational Leadership</strong> (සන්දර්භීය නායකත්වය) වේ.",
+        whyWrong: [
+          "<strong>B, C, D යනු අනුගාමිකයින්ගේ තත්ත්වය නොසලකා හරින දෘඩ නායකත්ව ක්‍රම වේ.</strong>"
+        ],
+        tip: "Follower readiness and competence = Situational Leadership.",
+        answer: "Situational Leadership"
       },
       {
         id: 24, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q24. Which IT enabler is most closely associated with a Cost Leadership strategy?",
-        answer: "Automation, shared service tools, and lean ERP",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> පිරිවැය නායකත්ව උපායමාර්ගයකට (Cost Leadership) වඩාත්ම සම්බන්ධ IT මෙවලම් වන්නේ ස්වයංක්‍රීයකරණය (Automation) සහ Lean ERP පද්ධති වේ.",
-        tip: "Cost Leadership IT = Automation & lean ERP."
+        options: [
+          "A) Custom luxury handmade software development",
+          "B) Automation, shared service tools, and lean ERP",
+          "C) Expensive experimental virtual reality headsets",
+          "D) Manual paper-based data entry systems"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> පිරිවැය නායකත්ව උපායමාර්ගයකට (Cost Leadership strategy) වඩාත්ම සහාය වන IT මෙවලම් වන්නේ ක්‍රියාවලි ස්වයංක්‍රීයකරණය (Automation), හවුල් සේවා මෙවලම් (Shared service tools) සහ Lean ERP පද්ධති මඟින් නාස්තිය අවම කිරීමයි.",
+        whyWrong: [
+          "<strong>A, C යනු අධික පිරිවැයක් දරන අත්හදා බැලීම් වේ.</strong>",
+          "<strong>D යනු අකාර්යක්ෂම ක්‍රමයකි.</strong>"
+        ],
+        tip: "Cost Leadership strategy IT enabler = Automation, shared service tools, and lean ERP.",
+        answer: "Automation, shared service tools, and lean ERP"
       },
       {
         id: 25, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q25. What is the main limitation of the traditional BPM lifecycle?",
-        answer: "It does not allow for process changes during execution",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> සාම්ප්‍රදායික BPM ජීවන චක්‍රයේ ප්‍රධාන සීමාව වන්නේ ක්‍රියාවලිය ක්‍රියාත්මක වන අතරතුර (During execution) වෙනස්කම් කිරීමට ඉඩ නොදීමයි.",
-        tip: "Traditional BPM limitation = No changes during execution."
+        options: [
+          "A) It is too fast and causes computer crashes.",
+          "B) It does not allow for process changes during execution.",
+          "C) It requires zero financial investment.",
+          "D) It only works for manufacturing physical cars."
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> සාම්ප්‍රදායික BPM ජීවන චක්‍රයේ (Traditional BPM lifecycle) ඇති ප්‍රධාන සීමාව වන්නේ ක්‍රියාවලිය ක්‍රියාත්මක වන අතරතුර (During execution) පද්ධතියට අවශ්‍ය ගතික වෙනස්කම් කිරීමට පහසුවෙන් ඉඩ නොදීමයි.",
+        whyWrong: [
+          "<strong>A, C, D යනු BPM ජීවන චක්‍රය පිළිබඳ වැරදි වැටහීම් වේ.</strong>"
+        ],
+        tip: "Traditional BPM lifecycle limitation = It does not allow for process changes during execution.",
+        answer: "It does not allow for process changes during execution"
       },
       {
         id: 26, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q26. What is the 'incumbent's dilemma' in the context of the S-curve?",
-        answer: "Choosing between keeping the old technology or investing in a new one",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> S-වක්‍රය සන්දර්භය තුළ 'Incumbent's dilemma' යනු පවතින පැරණි තාක්ෂණය රැකගැනීම හෝ නව තාක්ෂණයක ආයෝජනය කිරීම අතර සිරවීමයි.",
-        tip: "Incumbent's dilemma = Old technology vs new technology investment."
+        options: [
+          "A) Choosing between keeping the old technology or investing in a new one",
+          "B) Deciding what color to paint the office walls",
+          "C) Selecting office lunch catering menus",
+          "D) Choosing office chair designs"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> S-වක්‍රය (S-curve) සන්දර්භය තුළ 'Incumbent's dilemma' (ප්‍රතිස්ථාපිතයාගේ උගුල) යනු දැනටමත් ලාභ ගෙන දෙන පවතින පැරණි තාක්ෂණය රැකගැනීම හෝ අනාගතය වෙනුවෙන් සම්පූර්ණයෙන්ම නව තාක්ෂණයක ආයෝජනය කිරීම අතර සිරවීමයි.",
+        whyWrong: [
+          "<strong>B, C, D යනු උපායමාර්ගික වැදගත්කමක් නැති සුළු පරිපාලන තේරීම් වේ.</strong>"
+        ],
+        tip: "Incumbent's dilemma = Choosing between keeping the old technology or investing in a new one.",
+        answer: "Choosing between keeping the old technology or investing in a new one"
       },
       {
         id: 27, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q27. What is a key risk of charismatic leadership?",
-        answer: "Over-reliance on a single individual creates succession vulnerability",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> චමත්කාරජනක නායකත්වයේ (Charismatic leadership) ඇති ප්‍රධාන අවදානම වන්නේ තනි පුද්ගලයෙකු මත අධික ලෙස යැපීම නිසා අනුප්‍රාප්තික දුර්වලතා (Succession vulnerability) ඇති වීමයි.",
-        tip: "Charismatic leadership risk = Over-reliance on single individual."
+        options: [
+          "A) Total lack of public attention",
+          "B) Over-reliance on a single individual creates succession vulnerability",
+          "C) Excessive employee decentralization",
+          "D) Complete absence of any organizational vision"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> චමත්කාරජනක නායකත්වයේ (Charismatic leadership) ඇති ප්‍රධාන අවදානම වන්නේ මුළු ආයතනයම තනි පුද්ගලයෙකුගේ පෞරුෂය මත පමණක් රඳා පැවතීම නිසා, එම පුද්ගලයා ඉවත් වූ විට අනුප්‍රාප්තික අර්බුද ඇති වීමයි (Succession vulnerability).",
+        whyWrong: [
+          "<strong>A, C, D යනු චමත්කාරජනක නායකත්වයකට පටහැනි ලක්ෂණ වේ.</strong>"
+        ],
+        tip: "Charismatic leadership risk = Over-reliance on a single individual creates succession vulnerability.",
+        answer: "Over-reliance on a single individual creates succession vulnerability"
       },
       {
         id: 28, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q28. According to the AMC model, a rival responds to a competitive action only when it has:",
-        answer: "Awareness, Motivation, and Capability",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> AMC ආකෘතියට අනුව, ප්‍රතිවාදියෙකු ප්‍රතිචාර දක්වන්නේ ඔහුට දැනුවත්භාවය (Awareness), අභිප්‍රේරණය (Motivation) සහ හැකියාව (Capability) යන තුනම පවතින විට පමණි.",
-        tip: "AMC model = Awareness, Motivation, Capability."
+        options: [
+          "A) Luck, Wealth, and Speed",
+          "B) Awareness, Motivation, and Capability",
+          "C) Size, Age, and Location",
+          "D) Advertising, PR, and Sales"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> AMC ආකෘතියට (Awareness-Motivation-Capability model) අනුව, ප්‍රතිවාදියෙකුගේ ක්‍රියාවකට තවත් ආයතනයක් ප්‍රතිචාර දක්වන්නේ එම ආයතනයට ඒ පිළිබඳ දැනුවත්භාවය (Awareness), ප්‍රතිචාර දැක්වීමට අභිප්‍රේරණය (Motivation) සහ අවශ්‍ය හැකියාව (Capability) යන තුනම පවතින විට පමණි.",
+        whyWrong: [
+          "<strong>A, C, D යනු AMC ආකෘතියට අදාළ නොවන වැරදි සංරචක වේ.</strong>"
+        ],
+        tip: "AMC model = Awareness, Motivation, and Capability.",
+        answer: "Awareness, Motivation, and Capability"
       },
       {
         id: 29, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q29. Which of the following is an example of an inter-organizational system?",
-        answer: "EDI",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර පද්ධතියකට (Inter-organizational system) හොඳම උදාහරණයක් වන්නේ **EDI (Electronic Data Interchange)** වේ.",
-        tip: "Inter-organizational system example = EDI."
+        options: [
+          "A) Standalone offline personal calculator",
+          "B) EDI (Electronic Data Interchange)",
+          "C) Local offline word processor document",
+          "D) Single-user desktop paint software"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ආයතන දෙකක් හෝ කිහිපයක් අතර තොරතුරු හුවමාරු කර ගැනීමට භාවිතා කරන පද්ධතියකට (Inter-organizational system) හොඳම උදාහරණයක් වන්නේ **EDI (Electronic Data Interchange)** වේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු තනි පරිගණකයක පමණක් ක්‍රියාත්මක වන තනි පුද්ගල මෙවලම් වේ.</strong>"
+        ],
+        tip: "Inter-organizational system example = EDI (Electronic Data Interchange).",
+        answer: "EDI"
       },
       {
         id: 30, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q30. What is the key idea behind IT-enabled value creation?",
-        answer: "Value comes from the fit between IT and the organization's strategy, structure, and people",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> IT මඟින් අගය නිර්මාණය වීමේ මූලික අදහස වන්නේ IT සහ ආයතනයේ උපායමාර්ගය, ව්‍යුහය සහ ජනතාව අතර ඇති ගැළපීමෙන් (Fit) අගය ලැබෙන බවයි.",
-        tip: "IT-enabled value = Fit between IT and strategy, structure & people."
+        options: [
+          "A) Value comes from purchasing the most expensive computers available.",
+          "B) Value comes from the fit between IT and the organization's strategy, structure, and people.",
+          "C) Value is created solely by eliminating all human employees.",
+          "D) Value has nothing to do with business strategy."
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> IT මඟින් ආයතනයක අගය නිර්මාණය වීමේ මූලික අදහස වන්නේ තොරතුරු තාක්ෂණය (IT) සහ ආයතනයේ උපායමාර්ගය (Strategy), ව්‍යුහය (Structure) සහ ජනතාව (People) අතර ඇති හරවත් ගැළපීමෙන් (Fit) අගය ලැබෙන බවයි.",
+        whyWrong: [
+          "<strong>A, C, D යනු තාක්ෂණික අගය නිර්මාණය කිරීමේ මූලධර්මවලට පටහැනි අදහස් වේ.</strong>"
+        ],
+        tip: "IT-enabled value creation = Fit between IT and the organization's strategy, structure, and people.",
+        answer: "Value comes from the fit between IT and the organization's strategy, structure, and people"
       },
       {
         id: 31, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q31. What is the purpose of PESTLE analysis?",
-        answer: "To scan the external environment for political, economic, social, technological, legal, and environmental factors",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> PESTLE විශ්ලේෂණයේ අරමුණ වන්නේ දේශපාලන, ආර්ථික, සමාජීය, තාක්ෂණික, නීතිමය සහ පාරිසරික සාධක සඳහා බාහිර පරිසරය ස්කෑන් කිරීමයි.",
-        tip: "PESTLE = External environmental scan (Political, Economic, Social, Tech, Legal, Environmental)."
+        options: [
+          "A) To calculate internal employee daily coffee breaks",
+          "B) To scan the external environment for political, economic, social, technological, legal, and environmental factors",
+          "C) To test computer software bug fixes",
+          "D) To measure office printer ink cartridge levels"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> PESTLE විශ්ලේෂණයේ මූලික අරමුණ වන්නේ ආයතනයට බාහිරින් බලපාන දේශපාලන (Political), ආර්ථික (Economic), සමාජීය (Social), තාක්ෂණික (Technological), නීතිමය (Legal) සහ පාරිසරික (Environmental) සාධක පරීක්ෂා කිරීමයි (External environment scan).",
+        whyWrong: [
+          "<strong>A, C, D යනු අභ්‍යන්තර මෙහෙයුම් සහ තාක්ෂණික පරීක්ෂණ වේ.</strong>"
+        ],
+        tip: "PESTLE analysis = Scan external environment for Political, Economic, Social, Tech, Legal, and Environmental factors.",
+        answer: "To scan the external environment for political, economic, social, technological, legal, and environmental factors"
       },
       {
         id: 32, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q32. What is the primary strategic value of inter-organizational systems?",
-        answer: "Supply-chain coordination and partner lock-in",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර පද්ධතිවල ප්‍රධාන උපායමාර්ගික අගය වන්නේ සැපයුම් දාම සම්බන්ධීකරණය (Supply-chain coordination) සහ හවුල්කරුවන් රඳවා ගැනීමයි (Partner lock-in).",
-        tip: "Inter-organizational systems value = Supply-chain coordination & partner lock-in."
+        options: [
+          "A) Supply-chain coordination and partner lock-in",
+          "B) Increasing office electricity bills",
+          "C) Slowing down inter-company communication",
+          "D) Eliminating all business partnerships"
+        ],
+        correct: 1, // wait index 0 is supply-chain
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ආයතන අතර පද්ධතිවල (Inter-organizational systems) ප්‍රධාන උපායමාර්ගික අගය වන්නේ සැපයුම් දාම සම්බන්ධීකරණය (Supply-chain coordination) වඩාත් කාර්යක්ෂම කිරීම සහ හවුල්කරුවන් වෙනත් අය වෙත යාම වැළැක්වීමයි (Partner lock-in).",
+        whyWrong: [
+          "<strong>B, C, D යනු ආයතනයක් කිසිවිටෙකත් අපේක්ෂා නොකරන අවාසිදායක තත්ත්ව වේ.</strong>"
+        ],
+        tip: "Primary strategic value of inter-organizational systems = Supply-chain coordination and partner lock-in.",
+        answer: "Supply-chain coordination and partner lock-in"
       },
       {
         id: 33, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q33. What is the purpose of the 'Analyse' phase in the BPM lifecycle?",
-        answer: "To evaluate performance against business goals and identify bottlenecks",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> BPM ජීවන චක්‍රයේ 'Analyse' (විශ්ලේෂණය) අදියරේ අරමුණ වන්නේ ව්‍යාපාරික ඉලක්කවලට සාපේක්ෂව කාර්ය සාධනය ඇගයීම සහ බාධක (Bottlenecks) හඳුනා ගැනීමයි.",
-        tip: "Analyse phase = Evaluate performance & identify bottlenecks."
+        options: [
+          "A) To print physical paper brochures for marketing",
+          "B) To evaluate performance against business goals and identify bottlenecks",
+          "C) To hire brand new corporate executives",
+          "D) To paint office walls in bright colors"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> BPM ජීවන චක්‍රයේ 'Analyse' (විශ්ලේෂණය) අදියරේ මූලික අරමුණ වන්නේ ව්‍යාපාරික ඉලක්කවලට සාපේක්ෂව ක්‍රියාවලියේ කාර්ය සාධනය ඇගයීම සහ ක්‍රියාවලිය මන්දගාමී කරන බාධක හෝ අවහිරතා (Bottlenecks) හඳුනා ගැනීමයි.",
+        whyWrong: [
+          "<strong>A, C, D යනු විශ්ලේෂණ අදියරට කිසිදු සේබඳතාවක් නැති පරිපාලන කටයුතු වේ.</strong>"
+        ],
+        tip: "Analyse phase in BPM = Evaluate performance against business goals and identify bottlenecks.",
+        answer: "To evaluate performance against business goals and identify bottlenecks"
       },
       {
         id: 34, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q34. What are the three pillars of the Strategic Leadership Triangle?",
-        answer: "Vision, Strategy, Execution",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික නායකත්ව ත්‍රිකෝණයේ කුළුණු 3 වන්නේ **දැක්ම (Vision), උපායමාර්ගය (Strategy), සහ ක්‍රියාත්මක කිරීම (Execution)** වේ.",
-        tip: "Strategic Leadership Triangle = Vision, Strategy, Execution."
+        options: [
+          "A) Past, Present, and Future",
+          "B) Vision, Strategy, and Execution",
+          "C) Profit, Loss, and Tax",
+          "D) Sales, Marketing, and PR"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> උපායමාර්ගික නායකත්ව ත්‍රිකෝණයේ (Strategic Leadership Triangle) ප්‍රධාන කුළුණු 3 වන්නේ **දැක්ම (Vision), උපායමාර්ගය (Strategy), සහ ක්‍රියාත්මක කිරීම (Execution)** වේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු උපායමාර්ගික නායකත්ව ත්‍රිකෝණයේ මූලික කුළුණු නොවේ.</strong>"
+        ],
+        tip: "Three pillars of the Strategic Leadership Triangle = Vision, Strategy, and Execution.",
+        answer: "Vision, Strategy, Execution"
       },
       {
         id: 35, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q35. Which leadership style is described as prioritizing the needs of followers first and empowering them to perform at their highest potential?",
-        answer: "Servant Leadership",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> අනුගාමිකයින්ගේ අවශ්‍යතා මුල්තැන දී සලකා බලා ඔවුන් සවිබල ගන්වන නායකත්ව විලාසය **Servant Leadership** (සේවක නායකත්වය) වේ.",
-        tip: "Prioritizing needs of followers first = Servant Leadership."
+        options: [
+          "A) Servant Leadership",
+          "B) Dictatorial Leadership",
+          "C) Transactional Leadership",
+          "D) Selfish Leadership"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> තමන්ට වඩා අනුගාමිකයින්ගේ අවශ්‍යතා මුල්තැන දී සලකා බලා, ඔවුන් සවිබල ගන්වමින් (Empowering) ඉහළම හැකියාවෙන් දක්ෂතා දැක්වීමට මඟ පෙන්වන නායකත්ව විලාසය **Servant Leadership** (සේවක නායකත්වය) වේ.",
+        whyWrong: [
+          "<strong>B, C, D යනු අනුගාමිකයින්ගේ අවශ්‍යතාවන්ට වඩා නායකයාගේ හෝ ආයතනයේ පාලනයට මුල්තැන දෙන ක්‍රම වේ.</strong>"
+        ],
+        tip: "Prioritizing the needs of followers first and empowering them = Servant Leadership.",
+        answer: "Servant Leadership"
       },
       {
         id: 36, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q36. Which type of leadership is focused on leveraging tech innovation for strategic advantage and modernizing operations?",
-        answer: "Digital/Technology Leadership",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික වාසි සඳහා තාක්ෂණික නවෝත්පාදනයන් භාවිතා කිරීම සහ මෙහෙයුම් නවීකරණය කිරීම කෙරෙහි අවධානය යොමු කරන්නේ **Digital/Technology Leadership** වේ.",
-        tip: "Leveraging tech innovation = Digital/Technology Leadership."
+        options: [
+          "A) Traditional Paper-Based Leadership",
+          "B) Digital/Technology Leadership",
+          "C) Purely Manual Administrative Leadership",
+          "D) Strictly Non-Technical Leadership"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> උපායමාර්ගික වාසි ලබා ගැනීම සඳහා තාක්ෂණික නවෝත්පාදනයන් (Tech innovation) භාවිතා කිරීම සහ ආයතනික මෙහෙයුම් නවීකරණය කිරීම (Modernizing operations) කෙරෙහි අවධානය යොමු කරන්නේ **Digital/Technology Leadership** වේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු තාක්ෂණය ප්‍රතික්ෂේප කරන හෝ නොසලකා හරින ක්‍රම වේ.</strong>"
+        ],
+        tip: "Leveraging tech innovation for strategic advantage = Digital/Technology Leadership.",
+        answer: "Digital/Technology Leadership"
       },
       {
         id: 37, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q37. Which of the following is an internal driver of business change?",
-        answer: "Leadership transitions",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාරික වෙනස්වීම් ඇති කරන අභ්‍යන්තර ධාවකයක් (Internal driver) වන්නේ නායකත්ව මාරුවීම් (Leadership transitions) වේ.",
-        tip: "Internal driver of change = Leadership transitions."
+        options: [
+          "A) Global macroeconomic inflation",
+          "B) Leadership transitions",
+          "C) National government tax law changes",
+          "D) International trade tariffs"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ආයතනයක් තුළ ව්‍යාපාරික වෙනස්වීම් ඇති කරන අභ්‍යන්තර ධාවකයක් (Internal driver) වන්නේ ප්‍රධාන විධායක නිලධාරී හෝ ඉහළ කළමනාකරණයේ සිදුවන නායකත්ව මාරුවීම් (Leadership transitions) වේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු ආයතනයෙන් බාහිරව පැනනඟින බාහිර ධාවක (External drivers) වේ.</strong>"
+        ],
+        tip: "Internal driver of business change = Leadership transitions.",
+        answer: "Leadership transitions"
       },
       {
         id: 38, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q38. Which of the following is a key difference between process management and project management?",
-        answer: "Process management is continuous and repeatable, while project management is finite and temporary",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ක්‍රියාවලි කළමනාකරණය (Process management) යනු අඛණ්ඩ සහ නැවත නැවත කළ හැකි (Continuous & repeatable) ක්‍රියාවකි; ව්‍යාපෘති කළමනාකරණය යනු සීමිත සහ තාවකාලික (Finite & temporary) එකකි.",
-        tip: "Process = Continuous & repeatable | Project = Finite & temporary."
+        options: [
+          "A) Process management is continuous and repeatable, while project management is finite and temporary.",
+          "B) Process management is illegal, while project management is legal.",
+          "C) Process management has a fixed end date, while project management lasts forever.",
+          "D) There is no difference between them."
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ක්‍රියාවලි කළමනාකරණය (Process management) යනු අඛණ්ඩ සහ නැවත නැවත කළ හැකි (Continuous & repeatable) ක්‍රියාවකි; නමුත් ව්‍යාපෘති කළමනාකරණය (Project management) යනු නිශ්චිත ආරම්භයක් සහ අවසානයක් ඇති තාවකාලික උත්සාහයකි (Finite & temporary).",
+        whyWrong: [
+          "<strong>B, C, D යනු සම්පූර්ණයෙන්ම වැරදි සංසන්දන වේ.</strong>"
+        ],
+        tip: "Process = Continuous & repeatable | Project = Finite & temporary.",
+        answer: "Process management is continuous and repeatable, while project management is finite and temporary"
       },
       {
         id: 39, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q39. According to the Strategic Alignment Model, value depends on the alignment between which two dimensions?",
-        answer: "Internal and External fit",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික ගැළපුම් ආකෘතියට (Strategic Alignment Model) අනුව අගය රඳා පවතින්නේ අභ්‍යන්තර සහ බාහිර ගැළපුම (Internal and External fit) අතර වේ.",
-        tip: "Strategic Alignment Model = Internal and External fit."
+        options: [
+          "A) Internal and External fit",
+          "B) North and South direction",
+          "C) Office color and ceiling height",
+          "D) Employee shoe size and age"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> උපායමාර්ගික ගැළපුම් ආකෘතියට (Strategic Alignment Model) අනුව ආයතනික අගය සාර්ථකව නිර්මාණය වීම රඳා පවතින්නේ අභ්‍යන්තර (Internal) සහ බාහිර (External) ගැළපුම (fit) අතර පවතින සුසංයෝගය මතය.",
+        whyWrong: [
+          "<strong>B, C, D යනු උපායමාර්ගික ආකෘතිවලට සම්පූර්ණයෙන්ම අදාළ නැති විහිළු සහගත සංසන්දන වේ.</strong>"
+        ],
+        tip: "Strategic Alignment Model dimensions = Internal and External fit.",
+        answer: "Internal and External fit"
       },
       {
         id: 40, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q40. Which of the following is a technological driver of business change?",
-        answer: "AI and automation",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාරික වෙනස්වීම් ඇති කරන තාක්ෂණික ධාවකයක් (Technological driver) වන්නේ කෘත්‍රිම බුද්ධිය (AI) සහ ස්වයංක්‍රීයකරණයයි.",
-        tip: "Technological driver = AI and automation."
+        options: [
+          "A) Seasonal winter weather conditions",
+          "B) AI and automation",
+          "C) Office building rent price increases",
+          "D) Employee coffee machine preferences"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ව්‍යාපාරික මෙහෙයුම් වෙනස් කිරීමට බලපාන ප්‍රධාන තාක්ෂණික ධාවකයක් (Technological driver) වන්නේ කෘත්‍රිම බුද්ධිය (AI) සහ ස්වයංක්‍රීයකරණයයි (Automation).",
+        whyWrong: [
+          "<strong>A, C, D යනු කාලගුණික, මූල්‍ය හෝ පුද්ගලික මනාපයන් වේ.</strong>"
+        ],
+        tip: "Technological driver of business change = AI and automation.",
+        answer: "AI and automation"
       },
       {
         id: 41, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q41. Which framework is used to analyze the competitive forces shaping an industry's profitability?",
-        answer: "Porter's Five Forces",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> කර්මාන්තයක ලාභදායීතාවයට බලපාන තරඟකාරී බලවේග විශ්ලේෂණය කිරීමට භාවිතා කරන රාමුව **Porter's Five Forces** වේ.",
-        tip: "Industry profitability & competitive forces = Porter's Five Forces."
+        options: [
+          "A) Porter's Five Forces",
+          "B) Maslow's Hierarchy of Needs",
+          "C) Newton's Laws of Motion",
+          "D) Periodic Table of Elements"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> කර්මාන්තයක ලාභදායීතාවයට (Profitability) බලපාන තරඟකාරී බලවේග 5 විශ්ලේෂණය කර තක්සේරු කිරීමට භාවිතා කරන සම්භාව්‍ය රාමුව **Porter's Five Forces** වේ.",
+        whyWrong: [
+          "<strong>B:</strong> මනෝවිද්‍යාවට අදාළ වේ.",
+          "<strong>C:</strong> භෞතික විද්‍යාවට අදාළ වේ.",
+          "<strong>D:</strong> රසායන විද්‍යාවට අදාළ වේ."
+        ],
+        tip: "Analyze competitive forces shaping industry profitability = Porter's Five Forces.",
+        answer: "Porter's Five Forces"
       },
       {
         id: 42, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q42. Which level of strategy is concerned with how to execute the business strategy within each department?",
-        answer: "Functional Level",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> සෑම දෙපාර්තමේන්තුවක් තුළම ව්‍යාපාරික උපායමාර්ගය ක්‍රියාත්මක කරන්නේ කෙසේද යන්න සම්බන්ධ වන්නේ **Functional Level** (කාර්ය මට්ටම) උපායමාර්ගයයි.",
-        tip: "Execute within each department = Functional Level."
+        options: [
+          "A) Corporate Level",
+          "B) International Level",
+          "C) Functional Level",
+          "D) Global Holding Level"
+        ],
+        correct: 2,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ආයතනයක එක් එක් දෙපාර්තමේන්තුව තුළ (උදා: මානව සම්පත් හෝ නිෂ්පාදන) ව්‍යාපාරික උපායමාර්ගය ප්‍රායෝගිකව ක්‍රියාත්මක කරන්නේ කෙසේද යන්න සම්බන්ධ වන්නේ **Functional Level** (කාර්ය මට්ටම) උපායමාර්ගයයි.",
+        whyWrong: [
+          "<strong>A:</strong> මුළු ආයතනයම ආවරණය කරයි.",
+          "<strong>B & D යනු ජාත්‍යන්තර මට්ටමේ ව්‍යාප්තියට අදාළ වේ.</strong>"
+        ],
+        tip: "Execute business strategy within each department = Functional Level.",
+        answer: "Functional Level"
       },
       {
         id: 43, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q43. Which of the following is an external driver of business change?",
-        answer: "Regulatory and legal changes",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාරික වෙනස්වීම් ඇති කරන බාහිර ධාවකයක් (External driver) වන්නේ නියාමන සහ නීතිමය වෙනස්වීම් වේ.",
-        tip: "External driver of change = Regulatory and legal changes."
+        options: [
+          "A) Internal office chair color selection",
+          "B) Regulatory and legal changes",
+          "C) Internal employee birthday party schedules",
+          "D) Office cafeteria snack choices"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ආයතනයෙන් බාහිරව රජයෙන් හෝ නීති පද්ධතියෙන් පැනනඟින, ව්‍යාපාරික වෙනස්වීම් ඇති කරන ප්‍රධාන බාහිර ධාවකයක් (External driver) වන්නේ නියාමන සහ නීතිමය වෙනස්වීම් වේ (Regulatory and legal changes).",
+        whyWrong: [
+          "<strong>A, C, D යනු ආයතනය තුළ පමණක් සිදුවන ඉතා සුළු අභ්‍යන්තර කටයුතු වේ.</strong>"
+        ],
+        tip: "External driver of business change = Regulatory and legal changes.",
+        answer: "Regulatory and legal changes"
       },
       {
         id: 44, cat: "strategy", catName: "🎯 උපායමාර්ගික මට්ටම් (Strategy Levels)",
         q: "Q44. Which of the following is NOT one of the three main types of business-level strategy?",
-        answer: "Diversification",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර මට්ටමේ උපායමාර්ග තුනට (Cost Leadership, Differentiation, Focus) අයත් **නොවන** එකක් වන්නේ විවිධාංගීකරණය (**Diversification**) වේ (මෙය ආයතනික මට්ටමේ - Corporate level strategy එකකි).",
-        tip: "NOT a business-level strategy = Diversification."
+        options: [
+          "A) Cost Leadership",
+          "B) Differentiation",
+          "C) Focus",
+          "D) Diversification"
+        ],
+        correct: 3,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> පෝටර්ගේ සාම්ප්‍රදායික ව්‍යාපාර මට්ටමේ උපායමාර්ග 3 වන්නේ Cost Leadership, Differentiation, සහ Focus වේ. මීට අයත් **නොවන** එකක් වන්නේ විවිධාංගීකරණය (**Diversification**) වේ (මෙය ආයතනික මට්ටමේ - Corporate level strategy එකකි).",
+        whyWrong: [
+          "<strong>A, B, C යනු ප්‍රධාන ව්‍යාපාර මට්ටමේ උපායමාර්ග 3 වේ.</strong>"
+        ],
+        tip: "NOT a business-level strategy = Diversification (it's corporate-level).",
+        answer: "Diversification"
       },
       {
         id: 45, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q45. What are the 'Four I's' of transformational leadership?",
-        answer: "Idealized Influence, Inspirational Motivation, Inspirational Motivation, Individual Consideration",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> පරිවර්තනීය නායකත්වයේ 'Four I's' වන්නේ Idealized Influence, Inspirational Motivation, Intellectual Stimulation, සහ Individual Consideration වේ.",
-        tip: "Four I's = Influence, Motivation, Stimulation, Consideration."
+        options: [
+          "A) Idealized Influence, Inspirational Motivation, Intellectual Stimulation, Individual Consideration",
+          "B) Ignore, Isolate, Impair, and Interfere",
+          "C) Inventory, Invoice, Inspection, and Integration",
+          "D) Input, Output, Process, and Feedback"
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> පරිවර්තනීය නායකත්වයේ (Transformational leadership) මූලික කුළුණු 4 වන 'Four I's' වන්නේ Idealized Influence, Inspirational Motivation, Intellectual Stimulation, සහ Individual Consideration වේ.",
+        whyWrong: [
+          "<strong>B, C, D යනු නායකත්වයට සම්පූර්ණයෙන්ම අදාළ නැති වැරදි යෙදුම් වේ.</strong>"
+        ],
+        tip: "Four I's of transformational leadership = Idealized Influence, Inspirational Motivation, Intellectual Stimulation, Individual Consideration.",
+        answer: "Idealized Influence, Inspirational Motivation, Inspirational Motivation, Individual Consideration"
       },
       {
         id: 46, cat: "bpm", catName: "⚙️ ව්‍යාපාර ක්‍රියාවලි කළමනාකරණය (BPM & BPI)",
         q: "Q46. Which of the following is NOT a key characteristic of a business process?",
-        answer: "One-time event",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ව්‍යාපාර ක්‍රියාවලියක ප්‍රධාන ලක්ෂණයක් **නොවන්නේ** එය 'එක් වරක් සිදුවන සිදුවීමක්' (One-time event) වීමයි. ක්‍රියාවලි යනු අඛණ්ඩ හා පුනරාවර්තන (Repeatable) ඒවා වේ.",
-        tip: "Business processes are repeatable, NOT a 'one-time event'."
+        options: [
+          "A) It has defined inputs and outputs.",
+          "B) It is a one-time event that never happens again.",
+          "C) It adds value for customers.",
+          "D) It can cross departmental boundaries."
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ව්‍යාපාර ක්‍රියාවලියක ප්‍රධාන ලක්ෂණයක් **නොවන්නේ** එය 'එක් වරක් පමණක් සිදුවන සිදුවීමක්' (One-time event) වීමයි. ක්‍රියාවලි යනු අඛණ්ඩව නැවත නැවත කළ හැකි (Repeatable) ස්වභාවයක් ගන්නා ඒවා වේ.",
+        whyWrong: [
+          "<strong>A, C, D යනු ව්‍යාපාර ක්‍රියාවලියක සැබෑ ලක්ෂණ වේ.</strong>"
+        ],
+        tip: "Business processes are repeatable, NOT a 'one-time event'.",
+        answer: "One-time event"
       },
       {
         id: 47, cat: "leadership", catName: "👑 උපායමාර්ගික නායකත්වය (Strategic Leadership)",
         q: "Q47. What is the key difference between operational leadership and strategic leadership?",
-        answer: "Strategic leadership focuses on long-term vision, while operational leadership focuses on day-to-day execution",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> උපායමාර්ගික නායකත්වය දිගුකාලීන දැක්ම කෙරෙහි අවධානය යොමු කරන අතර, මෙහෙයුම් නායකත්වය (Operational leadership) දෛනික ක්‍රියාත්මක කිරීම කෙරෙහි අවධානය යොමු කරයි.",
-        tip: "Strategic = Long-term vision | Operational = Day-to-day execution."
+        options: [
+          "A) Strategic leadership focuses on long-term vision, while operational leadership focuses on day-to-day execution.",
+          "B) Operational leadership is illegal, while strategic leadership is legal.",
+          "C) Strategic leadership only handles office cleaning, while operational leadership plans the future.",
+          "D) There is no difference."
+        ],
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> උපායමාර්ගික නායකත්වය (Strategic leadership) ආයතනයේ දිගුකාලීන දැක්ම සහ අනාගත දිශානතිය කෙරෙහි අවධානය යොමු කරන අතර, මෙහෙයුම් නායකත්වය (Operational leadership) දෛනික ක්‍රියාත්මක කිරීම සහ මෙහෙයුම් පාලනය කෙරෙහි අවධානය යොමු කරයි.",
+        whyWrong: [
+          "<strong>B, C, D යනු සම්පූර්ණයෙන්ම වැරදි සංසන්දන වේ.</strong>"
+        ],
+        tip: "Strategic = Long-term vision | Operational = Day-to-day execution.",
+        answer: "Strategic leadership focuses on long-term vision, while operational leadership focuses on day-to-day execution"
       },
       {
         id: 48, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q48. Which of the following is a micro-level factor that shapes interfirm rivalry?",
-        answer: "Top managers' attention and view of rivals",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> ආයතන අතර තරඟකාරීත්වයට බලපාන ක්ෂුද්‍ර මට්ටමේ (Micro-level) සාධකයක් වන්නේ ඉහළ කළමනාකරුවන්ගේ අවධානය සහ ප්‍රතිවාදීන් පිළිබඳ ඔවුන්ගේ දැක්මයි.",
-        tip: "Micro-level rivalry factor = Top managers' attention & view of rivals."
+        options: [
+          "A) Global climate change weather patterns",
+          "B) Top managers' attention and view of rivals",
+          "C) International currency exchange rates",
+          "D) Global crude oil market prices"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> ආයතන අතර තරඟකාරීත්වයට බලපාන ක්ෂුද්‍ර මට්ටමේ හෝ අභ්‍යන්තර සාධකයක් වන්නේ ඉහළ කළමනාකරුවන්ගේ අවධානය සහ ප්‍රතිවාදීන් පිළිබඳ ඔවුන් දරන ආකල්ප හා දැක්මයි (Top managers' attention and view of rivals).",
+        whyWrong: [
+          "<strong>A, C, ද යනු මුළු මහත් ආර්ථිකයටම බලපාන සාර්ව මට්ටමේ (Macro) සාධක වේ.</strong>"
+        ],
+        tip: "Micro-level factor shaping rivalry = Top managers' attention and view of rivals.",
+        answer: "Top managers' attention and view of rivals"
       },
       {
         id: 49, cat: "competition", catName: "🚀 තරඟකාරීත්වය සහ නවෝත්පාදනය (Competition & Innovation)",
         q: "Q49. What strategic move did Netflix make to transition from DVD rentals to streaming?",
-        answer: "Launched streaming services and original content",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> DVD කුලියට දීමෙන් ස්ට්‍රීමින් (Streaming) වෙත මාරුවීමට නෙට්ෆ්ලික්ස් (Netflix) විසින් ස්ට්‍රීමින් සේවා සහ මුල් අන්තර්ගතයන් (Original content) හඳුන්වා දෙන ලදී.",
-        tip: "Netflix transition = Launched streaming services and original content."
+        options: [
+          "A) Closed down the company permanently",
+          "B) Launched streaming services and original content",
+          "C) Stopped selling movies and focused only on selling physical books",
+          "D) Reverted entirely to manual VHS tapes"
+        ],
+        correct: 1,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> සාම්ප්‍රදායික DVD කුලියට දීමේ ව්‍යාපාරයෙන් අන්තර්ජාලය හරහා ස්ට්‍රීමින් (Streaming) වෙත සාර්ථකව මාරුවීමට නෙට්ෆ්ලික්ස් (Netflix) විසින් නව ස්ට්‍රීමින් සේවා සහ තමන්ටම ආවේණික වූ මුල් අන්තර්ගතයන් (Original content) හඳුන්වා දෙන ලදී.",
+        whyWrong: [
+          "<strong>A, C, D යනු නෙට්ෆ්ලික්ස් ආයතනයේ වර්ධනයට පටහැනි වැරදි ප්‍රකාශ වේ.</strong>"
+        ],
+        tip: "Netflix transition from DVD to streaming = Launched streaming services and original content.",
+        answer: "Launched streaming services and original content"
       },
       {
         id: 50, cat: "it", catName: "💻 තොරතුරු තාක්ෂණ උපායමාර්ග (IT Strategy)",
         q: "Q50. Which of the following describes the evolving role of IT in business from the 1990s to the 2000s?",
-        answer: "Strategic Partner",
-        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය:</strong> 1990 ගණන්වල සිට 2000 ගණන් දක්වා ව්‍යාපාර තුළ IT හි පරිණාමය වන කාර්යභාරය විස්තර වන්නේ **Strategic Partner** (උපායමාර්ගික හවුල්කරු) ලෙසිනි.",
-        tip: "IT evolving role (1990s to 2000s) = Strategic Partner."
+        options: [
+          "A) Strategic Partner",
+          "B) Completely Useless Expense",
+          "C) Typewriter Repair Unit",
+          "D) Physical Warehouse Security Guard"
+        ],
+        correct: 1, // wait index 0 is Strategic Partner
+        correct: 0,
+        theory: "<strong>විස්තරාත්මක සිද්ධාන්තය (Theory):</strong> 1990 ගණන්වල සහ 2000 ගණන්වල ව්‍යාපාර තුළ තොරතුරු තාක්ෂණයේ (IT) කාර්යභාරය හුදු සහායක මෙවලමක සිට ආයතනය සමඟ අත්වැල් බැඳගෙන ඉදිරියට යන <strong>Strategic Partner</strong> (උපායමාර්ගික හවුල්කරු) මට්ටමට පරිණාමය විය.",
+        whyWrong: [
+          "<strong>B, C, D යනු ආයතනික උපායමාර්ග තුළ IT හි වැදගත්කම අවතක්සේරු කරන හාස්‍යජනක වැරදි විකල්ප වේ.</strong>"
+        ],
+        tip: "Evolving role of IT in business (1990s to 2000s) = Strategic Partner.",
+        answer: "Strategic Partner"
       }
     ];
 
     const cheatSheetItems = studyData.map(item => ({ kw: item.q.replace(/^[Q0-9]+\.\s*/, ''), ans: item.answer }));
 
     let currentCategory = 'all';
-    let masteredIds = JSON.parse(localStorage.getItem('strategic_mastered_50') || '[]');
+    let masteredIds = JSON.parse(localStorage.getItem('strategic_mastered_adv_50') || '[]');
     let quizAnswers = {};
+    let timerSeconds = 1800;
+    let timerInterval = null;
 
     function init() {
       renderStudyGuide();
@@ -536,6 +1047,7 @@
       });
       document.getElementById(`view-${tab}`).classList.remove('hidden');
       document.getElementById(`tab-${tab}`).className = "px-3.5 py-2 rounded-lg transition-all bg-sky-500 text-white shadow-md";
+      if (tab === 'quiz' && !timerInterval) startQuizTimer();
     }
 
     function setCategory(cat) {
@@ -562,6 +1074,15 @@
           html += `<div class="pt-4 pb-1 border-b border-slate-800"><h3 class="text-base sm:text-lg font-extrabold text-sky-400">${item.catName}</h3></div>`;
         }
 
+        const optionsHtml = item.options.map((opt, idx) => `
+          <div class="p-3 rounded-xl border text-xs sm:text-sm flex items-start justify-between gap-2 ${idx === item.correct ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-200 font-semibold' : 'bg-slate-900/50 border-slate-800/80 text-slate-400'}">
+            <span>${opt}</span>
+            ${idx === item.correct ? '<span class="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 text-[10px] font-extrabold shrink-0">✅ නිවැරදි පිළිතුර</span>' : ''}
+          </div>
+        `).join('');
+
+        const wrongHtml = item.whyWrong.map(w => `<li class="text-xs sm:text-sm text-slate-300 leading-relaxed">• ${w}</li>`).join('');
+
         html += `
           <div class="glass-card rounded-2xl p-5 sm:p-6 transition-all ${isMastered ? 'border-emerald-500/40 bg-emerald-950/10' : ''}">
             <div class="flex items-start justify-between gap-3 mb-3">
@@ -570,14 +1091,16 @@
                 ${isMastered ? '✓ පාඩම් කළා (Mastered)' : '○ පාඩම් කළා ලෙස ලකුණු කරන්න'}
               </button>
             </div>
-            <h4 class="text-base sm:text-lg font-bold text-white mb-3">${item.q}</h4>
-            <div class="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-200 font-bold text-xs sm:text-sm mb-4">
-              ✅ නිවැරදි පිළිතුර: ${item.answer}
-            </div>
+            <h4 class="text-base sm:text-lg font-bold text-white mb-4">${item.q}</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-5">${optionsHtml}</div>
             <div class="space-y-3 bg-slate-900/75 rounded-xl p-4 border border-slate-800/90">
               <div>
                 <div class="text-xs font-bold text-sky-400 uppercase tracking-wider mb-1">🧠 විස්තරාත්මක සිද්ධාන්තය (Detailed Theory)</div>
                 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">${item.theory}</p>
+              </div>
+              <div class="pt-2 border-t border-slate-800/80">
+                <div class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-1">❌ අනිත් උත්තර වැරදි ඇයි? (Why others are wrong - Elimination)</div>
+                <ul class="space-y-1.5">${wrongHtml}</ul>
               </div>
               <div class="pt-2 border-t border-slate-800/80">
                 <div class="bg-amber-500/10 border border-amber-500/25 rounded-lg p-3 flex items-start gap-2.5 text-xs sm:text-sm text-amber-200">
@@ -594,7 +1117,7 @@
     function toggleMastered(id) {
       if (masteredIds.includes(id)) masteredIds = masteredIds.filter(i => i !== id);
       else masteredIds.push(id);
-      localStorage.setItem('strategic_mastered_50', JSON.stringify(masteredIds));
+      localStorage.setItem('strategic_mastered_adv_50', JSON.stringify(masteredIds));
       updateMasteredUI();
       renderStudyGuide();
     }
@@ -608,7 +1131,7 @@
 
     function resetMastered() {
       masteredIds = [];
-      localStorage.setItem('strategic_mastered_50', '[]');
+      localStorage.setItem('strategic_mastered_adv_50', '[]');
       updateMasteredUI();
       renderStudyGuide();
       showToast("ප්‍රගතිය මුල සිට සකසන ලදී!");
@@ -639,47 +1162,65 @@
     function renderQuiz() {
       const container = document.getElementById('quiz-questions-container');
       container.innerHTML = studyData.map(item => {
-        const isRevealed = quizAnswers[item.id] !== undefined;
+        const selected = quizAnswers[item.id];
+        const hasAnswered = selected !== undefined;
+        const opts = item.options.map((opt, idx) => {
+          let btnStyle = "bg-slate-900/70 border-slate-800 text-slate-200";
+          if (hasAnswered) {
+            if (idx === item.correct) btnStyle = "bg-emerald-500/20 border-emerald-500 text-emerald-200 font-bold";
+            else if (idx === selected) btnStyle = "bg-rose-500/20 border-rose-500 text-rose-200";
+            else btnStyle = "bg-slate-900/40 border-slate-800/50 text-slate-500";
+          }
+          return `<button onclick="selectQuizAnswer(${item.id}, ${idx})" ${hasAnswered ? 'disabled' : ''} class="w-full text-left p-3 rounded-xl border text-xs sm:text-sm transition flex items-center justify-between gap-2 ${btnStyle}"><span>${opt}</span>${hasAnswered && idx === item.correct ? '<span>✅</span>' : ''}</button>`;
+        }).join('');
+
         return `
           <div class="glass-card rounded-2xl p-5">
             <div class="text-xs font-bold text-sky-400 mb-1">Question ${item.id}</div>
             <h4 class="text-sm sm:text-base font-bold text-white mb-4">${item.q}</h4>
-            ${!isRevealed ? `
-              <button onclick="revealQuizAnswer(${item.id})" class="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-semibold transition">
-                🔍 නිවැරදි පිළිතුර සහ විස්තරය බලන්න
-              </button>
-            ` : `
-              <div class="space-y-3 bg-slate-900/90 border border-emerald-500/40 rounded-xl p-4 text-xs sm:text-sm">
-                <div class="font-bold text-emerald-400">✅ පිළිතුර: ${item.answer}</div>
-                <div class="text-slate-300 leading-relaxed">${item.theory}</div>
-                <div class="text-amber-300 font-medium">💡 <strong>Tip:</strong> ${item.tip}</div>
-              </div>
-            `}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-3">${opts}</div>
+            ${hasAnswered ? `<div class="mt-4 p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs sm:text-sm space-y-2"><div class="font-bold ${selected === item.correct ? 'text-emerald-400' : 'text-rose-400'}">${selected === item.correct ? '🎉 නිවැරදියි!' : '❌ වැරදි පිළිතුරයි! නිවැරදි උත්තරය: ' + item.options[item.correct]}</div><div class="text-slate-300 leading-relaxed">${item.theory}</div></div>` : ''}
           </div>
         `;
       }).join('');
       updateQuizScore();
     }
 
-    function revealQuizAnswer(id) {
-      quizAnswers[id] = true;
+    function selectQuizAnswer(qId, optIdx) {
+      quizAnswers[qId] = optIdx;
       renderQuiz();
     }
 
     function updateQuizScore() {
-      const count = Object.keys(quizAnswers).length;
-      document.getElementById('quiz-score-badge').textContent = `බැලූ ප්‍රමාණය: ${count} / 50`;
+      let score = 0;
+      Object.keys(quizAnswers).forEach(qId => {
+        const q = studyData.find(i => i.id === parseInt(qId));
+        if (q && quizAnswers[qId] === q.correct) score++;
+      });
+      document.getElementById('quiz-score-badge').textContent = `ලකුණු: ${score} / 50`;
     }
 
     function resetQuiz() {
       quizAnswers = {};
+      timerSeconds = 1800;
       renderQuiz();
-      showToast("Quiz ප්‍රතිඵල මුල සිට සකසන ලදී!");
+      showToast("Quiz එක මුල සිට සකසන ලදී!");
+    }
+
+    function startQuizTimer() {
+      timerInterval = setInterval(() => {
+        if (timerSeconds > 0) {
+          timerSeconds--;
+          const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+          const s = String(timerSeconds % 60).padStart(2, '0');
+          document.getElementById('quiz-timer').textContent = `${m}:${s}`;
+        }
+      }, 1000);
     }
 
     function sharePortal() {
-      const text = `🎓 Strategic Management & BPM (50 Questions Master Study Hub)! විභාගයට ලකුණු උපරිමයෙන්ම ගන්න කියාපු App එක! 🚀`;
-      if (navigator.share) navigator.share({ title: 'Study Hub', text, url: window.location.href });
+      const text = `🎓 Strategic Management & BPM (50 Questions Advanced Study Hub)! විභාගයට ලකුණු 50/50 ගන්න කියාපු App එක! 🚀`;
+      if (navigator.share) navigator.share({ title: 'Advanced Study Hub', text, url: window.location.href });
       else {
         navigator.clipboard.writeText(text + " " + window.location.href);
         showToast("Link එක Copy වුණා! යාළුවන්ට යවන්න.");
